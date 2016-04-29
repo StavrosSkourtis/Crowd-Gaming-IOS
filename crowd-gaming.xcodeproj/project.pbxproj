@@ -1,0 +1,552 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		85AD45A61CD3880F007B0B83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AD45A51CD3880F007B0B83 /* AppDelegate.swift */; };
+		85AD45A81CD3880F007B0B83 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AD45A71CD3880F007B0B83 /* LoginController.swift */; };
+		85AD45AB1CD3880F007B0B83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85AD45A91CD3880F007B0B83 /* Main.storyboard */; };
+		85AD45AE1CD3880F007B0B83 /* crowd_gaming.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 85AD45AC1CD3880F007B0B83 /* crowd_gaming.xcdatamodeld */; };
+		85AD45B01CD3880F007B0B83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85AD45AF1CD3880F007B0B83 /* Assets.xcassets */; };
+		85AD45B31CD3880F007B0B83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85AD45B11CD3880F007B0B83 /* LaunchScreen.storyboard */; };
+		85AD45BE1CD3880F007B0B83 /* crowd_gamingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AD45BD1CD3880F007B0B83 /* crowd_gamingTests.swift */; };
+		85AD45C91CD3880F007B0B83 /* crowd_gamingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AD45C81CD3880F007B0B83 /* crowd_gamingUITests.swift */; };
+		85AD45D81CD39B14007B0B83 /* Quastionnaire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AD45D71CD39B14007B0B83 /* Quastionnaire.swift */; };
+		85AD45DA1CD39C8E007B0B83 /* QuestionGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AD45D91CD39C8E007B0B83 /* QuestionGroup.swift */; };
+		85AD45DC1CD39D94007B0B83 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AD45DB1CD39D94007B0B83 /* Question.swift */; };
+		85AD45DE1CD39E52007B0B83 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AD45DD1CD39E52007B0B83 /* Answer.swift */; };
+		85AD45E01CD39FD0007B0B83 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AD45DF1CD39FD0007B0B83 /* Config.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		85AD45BA1CD3880F007B0B83 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 85AD459A1CD3880E007B0B83 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 85AD45A11CD3880F007B0B83;
+			remoteInfo = "crowd-gaming";
+		};
+		85AD45C51CD3880F007B0B83 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 85AD459A1CD3880E007B0B83 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 85AD45A11CD3880F007B0B83;
+			remoteInfo = "crowd-gaming";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		85AD45A21CD3880F007B0B83 /* crowd-gaming.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "crowd-gaming.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		85AD45A51CD3880F007B0B83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		85AD45A71CD3880F007B0B83 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		85AD45AA1CD3880F007B0B83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		85AD45AD1CD3880F007B0B83 /* crowd_gaming.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = crowd_gaming.xcdatamodel; sourceTree = "<group>"; };
+		85AD45AF1CD3880F007B0B83 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		85AD45B21CD3880F007B0B83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		85AD45B41CD3880F007B0B83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		85AD45B91CD3880F007B0B83 /* crowd-gamingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "crowd-gamingTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		85AD45BD1CD3880F007B0B83 /* crowd_gamingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = crowd_gamingTests.swift; sourceTree = "<group>"; };
+		85AD45BF1CD3880F007B0B83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		85AD45C41CD3880F007B0B83 /* crowd-gamingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "crowd-gamingUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		85AD45C81CD3880F007B0B83 /* crowd_gamingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = crowd_gamingUITests.swift; sourceTree = "<group>"; };
+		85AD45CA1CD3880F007B0B83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		85AD45D71CD39B14007B0B83 /* Quastionnaire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quastionnaire.swift; sourceTree = "<group>"; };
+		85AD45D91CD39C8E007B0B83 /* QuestionGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionGroup.swift; sourceTree = "<group>"; };
+		85AD45DB1CD39D94007B0B83 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		85AD45DD1CD39E52007B0B83 /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
+		85AD45DF1CD39FD0007B0B83 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		85AD459F1CD3880F007B0B83 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		85AD45B61CD3880F007B0B83 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		85AD45C11CD3880F007B0B83 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		85AD45991CD3880E007B0B83 = {
+			isa = PBXGroup;
+			children = (
+				85AD45A41CD3880F007B0B83 /* crowd-gaming */,
+				85AD45BC1CD3880F007B0B83 /* crowd-gamingTests */,
+				85AD45C71CD3880F007B0B83 /* crowd-gamingUITests */,
+				85AD45A31CD3880F007B0B83 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		85AD45A31CD3880F007B0B83 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				85AD45A21CD3880F007B0B83 /* crowd-gaming.app */,
+				85AD45B91CD3880F007B0B83 /* crowd-gamingTests.xctest */,
+				85AD45C41CD3880F007B0B83 /* crowd-gamingUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		85AD45A41CD3880F007B0B83 /* crowd-gaming */ = {
+			isa = PBXGroup;
+			children = (
+				85AD45D61CD39AE2007B0B83 /* model */,
+				85AD45A51CD3880F007B0B83 /* AppDelegate.swift */,
+				85AD45A71CD3880F007B0B83 /* LoginController.swift */,
+				85AD45DF1CD39FD0007B0B83 /* Config.swift */,
+				85AD45A91CD3880F007B0B83 /* Main.storyboard */,
+				85AD45AF1CD3880F007B0B83 /* Assets.xcassets */,
+				85AD45B11CD3880F007B0B83 /* LaunchScreen.storyboard */,
+				85AD45B41CD3880F007B0B83 /* Info.plist */,
+				85AD45AC1CD3880F007B0B83 /* crowd_gaming.xcdatamodeld */,
+			);
+			path = "crowd-gaming";
+			sourceTree = "<group>";
+		};
+		85AD45BC1CD3880F007B0B83 /* crowd-gamingTests */ = {
+			isa = PBXGroup;
+			children = (
+				85AD45BD1CD3880F007B0B83 /* crowd_gamingTests.swift */,
+				85AD45BF1CD3880F007B0B83 /* Info.plist */,
+			);
+			path = "crowd-gamingTests";
+			sourceTree = "<group>";
+		};
+		85AD45C71CD3880F007B0B83 /* crowd-gamingUITests */ = {
+			isa = PBXGroup;
+			children = (
+				85AD45C81CD3880F007B0B83 /* crowd_gamingUITests.swift */,
+				85AD45CA1CD3880F007B0B83 /* Info.plist */,
+			);
+			path = "crowd-gamingUITests";
+			sourceTree = "<group>";
+		};
+		85AD45D61CD39AE2007B0B83 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				85AD45D71CD39B14007B0B83 /* Quastionnaire.swift */,
+				85AD45D91CD39C8E007B0B83 /* QuestionGroup.swift */,
+				85AD45DB1CD39D94007B0B83 /* Question.swift */,
+				85AD45DD1CD39E52007B0B83 /* Answer.swift */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		85AD45A11CD3880F007B0B83 /* crowd-gaming */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 85AD45CD1CD3880F007B0B83 /* Build configuration list for PBXNativeTarget "crowd-gaming" */;
+			buildPhases = (
+				85AD459E1CD3880F007B0B83 /* Sources */,
+				85AD459F1CD3880F007B0B83 /* Frameworks */,
+				85AD45A01CD3880F007B0B83 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "crowd-gaming";
+			productName = "crowd-gaming";
+			productReference = 85AD45A21CD3880F007B0B83 /* crowd-gaming.app */;
+			productType = "com.apple.product-type.application";
+		};
+		85AD45B81CD3880F007B0B83 /* crowd-gamingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 85AD45D01CD3880F007B0B83 /* Build configuration list for PBXNativeTarget "crowd-gamingTests" */;
+			buildPhases = (
+				85AD45B51CD3880F007B0B83 /* Sources */,
+				85AD45B61CD3880F007B0B83 /* Frameworks */,
+				85AD45B71CD3880F007B0B83 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				85AD45BB1CD3880F007B0B83 /* PBXTargetDependency */,
+			);
+			name = "crowd-gamingTests";
+			productName = "crowd-gamingTests";
+			productReference = 85AD45B91CD3880F007B0B83 /* crowd-gamingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		85AD45C31CD3880F007B0B83 /* crowd-gamingUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 85AD45D31CD3880F007B0B83 /* Build configuration list for PBXNativeTarget "crowd-gamingUITests" */;
+			buildPhases = (
+				85AD45C01CD3880F007B0B83 /* Sources */,
+				85AD45C11CD3880F007B0B83 /* Frameworks */,
+				85AD45C21CD3880F007B0B83 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				85AD45C61CD3880F007B0B83 /* PBXTargetDependency */,
+			);
+			name = "crowd-gamingUITests";
+			productName = "crowd-gamingUITests";
+			productReference = 85AD45C41CD3880F007B0B83 /* crowd-gamingUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		85AD459A1CD3880E007B0B83 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Stavros Skourtis";
+				TargetAttributes = {
+					85AD45A11CD3880F007B0B83 = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					85AD45B81CD3880F007B0B83 = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = 85AD45A11CD3880F007B0B83;
+					};
+					85AD45C31CD3880F007B0B83 = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = 85AD45A11CD3880F007B0B83;
+					};
+				};
+			};
+			buildConfigurationList = 85AD459D1CD3880E007B0B83 /* Build configuration list for PBXProject "crowd-gaming" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 85AD45991CD3880E007B0B83;
+			productRefGroup = 85AD45A31CD3880F007B0B83 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				85AD45A11CD3880F007B0B83 /* crowd-gaming */,
+				85AD45B81CD3880F007B0B83 /* crowd-gamingTests */,
+				85AD45C31CD3880F007B0B83 /* crowd-gamingUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		85AD45A01CD3880F007B0B83 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				85AD45B31CD3880F007B0B83 /* LaunchScreen.storyboard in Resources */,
+				85AD45B01CD3880F007B0B83 /* Assets.xcassets in Resources */,
+				85AD45AB1CD3880F007B0B83 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		85AD45B71CD3880F007B0B83 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		85AD45C21CD3880F007B0B83 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		85AD459E1CD3880F007B0B83 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				85AD45A81CD3880F007B0B83 /* LoginController.swift in Sources */,
+				85AD45D81CD39B14007B0B83 /* Quastionnaire.swift in Sources */,
+				85AD45A61CD3880F007B0B83 /* AppDelegate.swift in Sources */,
+				85AD45DE1CD39E52007B0B83 /* Answer.swift in Sources */,
+				85AD45DC1CD39D94007B0B83 /* Question.swift in Sources */,
+				85AD45E01CD39FD0007B0B83 /* Config.swift in Sources */,
+				85AD45DA1CD39C8E007B0B83 /* QuestionGroup.swift in Sources */,
+				85AD45AE1CD3880F007B0B83 /* crowd_gaming.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		85AD45B51CD3880F007B0B83 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				85AD45BE1CD3880F007B0B83 /* crowd_gamingTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		85AD45C01CD3880F007B0B83 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				85AD45C91CD3880F007B0B83 /* crowd_gamingUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		85AD45BB1CD3880F007B0B83 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 85AD45A11CD3880F007B0B83 /* crowd-gaming */;
+			targetProxy = 85AD45BA1CD3880F007B0B83 /* PBXContainerItemProxy */;
+		};
+		85AD45C61CD3880F007B0B83 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 85AD45A11CD3880F007B0B83 /* crowd-gaming */;
+			targetProxy = 85AD45C51CD3880F007B0B83 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		85AD45A91CD3880F007B0B83 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				85AD45AA1CD3880F007B0B83 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		85AD45B11CD3880F007B0B83 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				85AD45B21CD3880F007B0B83 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		85AD45CB1CD3880F007B0B83 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		85AD45CC1CD3880F007B0B83 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		85AD45CE1CD3880F007B0B83 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "crowd-gaming/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "skourtis.crowd-gaming";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		85AD45CF1CD3880F007B0B83 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "crowd-gaming/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "skourtis.crowd-gaming";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		85AD45D11CD3880F007B0B83 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "crowd-gamingTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "skourtis.crowd-gamingTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/crowd-gaming.app/crowd-gaming";
+			};
+			name = Debug;
+		};
+		85AD45D21CD3880F007B0B83 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "crowd-gamingTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "skourtis.crowd-gamingTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/crowd-gaming.app/crowd-gaming";
+			};
+			name = Release;
+		};
+		85AD45D41CD3880F007B0B83 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "crowd-gamingUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "skourtis.crowd-gamingUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "crowd-gaming";
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		85AD45D51CD3880F007B0B83 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "crowd-gamingUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "skourtis.crowd-gamingUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "crowd-gaming";
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		85AD459D1CD3880E007B0B83 /* Build configuration list for PBXProject "crowd-gaming" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				85AD45CB1CD3880F007B0B83 /* Debug */,
+				85AD45CC1CD3880F007B0B83 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		85AD45CD1CD3880F007B0B83 /* Build configuration list for PBXNativeTarget "crowd-gaming" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				85AD45CE1CD3880F007B0B83 /* Debug */,
+				85AD45CF1CD3880F007B0B83 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		85AD45D01CD3880F007B0B83 /* Build configuration list for PBXNativeTarget "crowd-gamingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				85AD45D11CD3880F007B0B83 /* Debug */,
+				85AD45D21CD3880F007B0B83 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		85AD45D31CD3880F007B0B83 /* Build configuration list for PBXNativeTarget "crowd-gamingUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				85AD45D41CD3880F007B0B83 /* Debug */,
+				85AD45D51CD3880F007B0B83 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		85AD45AC1CD3880F007B0B83 /* crowd_gaming.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				85AD45AD1CD3880F007B0B83 /* crowd_gaming.xcdatamodel */,
+			);
+			currentVersion = 85AD45AD1CD3880F007B0B83 /* crowd_gaming.xcdatamodel */;
+			path = crowd_gaming.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 85AD459A1CD3880E007B0B83 /* Project object */;
+}
