@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8553F9651CE88CCF006A871E /* ApiDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8553F9641CE88CCF006A871E /* ApiDriver.swift */; };
+		8553F9671CE88D83006A871E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8553F9661CE88D83006A871E /* User.swift */; };
 		85AD45A61CD3880F007B0B83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AD45A51CD3880F007B0B83 /* AppDelegate.swift */; };
 		85AD45A81CD3880F007B0B83 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AD45A71CD3880F007B0B83 /* LoginController.swift */; };
 		85AD45AB1CD3880F007B0B83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85AD45A91CD3880F007B0B83 /* Main.storyboard */; };
@@ -20,6 +22,11 @@
 		85AD45DC1CD39D94007B0B83 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AD45DB1CD39D94007B0B83 /* Question.swift */; };
 		85AD45DE1CD39E52007B0B83 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AD45DD1CD39E52007B0B83 /* Answer.swift */; };
 		85AD45E01CD39FD0007B0B83 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AD45DF1CD39FD0007B0B83 /* Config.swift */; };
+		85E39F801CF2101A0022FFE7 /* QuestionnaireTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E39F7F1CF2101A0022FFE7 /* QuestionnaireTableViewCell.swift */; };
+		85E39F821CF216440022FFE7 /* QuestionnaireTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E39F811CF216440022FFE7 /* QuestionnaireTableViewController.swift */; };
+		85E39F841CF23D600022FFE7 /* QuestionnaireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E39F831CF23D600022FFE7 /* QuestionnaireViewController.swift */; };
+		85E39F861CF2488E0022FFE7 /* QuestionGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E39F851CF2488E0022FFE7 /* QuestionGroupTableViewController.swift */; };
+		85E39F881CF249410022FFE7 /* QuestionGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E39F871CF249410022FFE7 /* QuestionGroupTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8553F9641CE88CCF006A871E /* ApiDriver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiDriver.swift; sourceTree = "<group>"; };
+		8553F9661CE88D83006A871E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		85AD45A21CD3880F007B0B83 /* crowd-gaming.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "crowd-gaming.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		85AD45A51CD3880F007B0B83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85AD45A71CD3880F007B0B83 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -59,6 +68,11 @@
 		85AD45DB1CD39D94007B0B83 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		85AD45DD1CD39E52007B0B83 /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		85AD45DF1CD39FD0007B0B83 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		85E39F7F1CF2101A0022FFE7 /* QuestionnaireTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionnaireTableViewCell.swift; sourceTree = "<group>"; };
+		85E39F811CF216440022FFE7 /* QuestionnaireTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionnaireTableViewController.swift; sourceTree = "<group>"; };
+		85E39F831CF23D600022FFE7 /* QuestionnaireViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionnaireViewController.swift; sourceTree = "<group>"; };
+		85E39F851CF2488E0022FFE7 /* QuestionGroupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionGroupTableViewController.swift; sourceTree = "<group>"; };
+		85E39F871CF249410022FFE7 /* QuestionGroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionGroupTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,8 +126,14 @@
 				85AD45D61CD39AE2007B0B83 /* model */,
 				85AD45A51CD3880F007B0B83 /* AppDelegate.swift */,
 				85AD45A71CD3880F007B0B83 /* LoginController.swift */,
+				8553F9641CE88CCF006A871E /* ApiDriver.swift */,
 				85AD45DF1CD39FD0007B0B83 /* Config.swift */,
 				85AD45A91CD3880F007B0B83 /* Main.storyboard */,
+				85E39F851CF2488E0022FFE7 /* QuestionGroupTableViewController.swift */,
+				85E39F871CF249410022FFE7 /* QuestionGroupTableViewCell.swift */,
+				85E39F811CF216440022FFE7 /* QuestionnaireTableViewController.swift */,
+				85E39F831CF23D600022FFE7 /* QuestionnaireViewController.swift */,
+				85E39F7F1CF2101A0022FFE7 /* QuestionnaireTableViewCell.swift */,
 				85AD45AF1CD3880F007B0B83 /* Assets.xcassets */,
 				85AD45B11CD3880F007B0B83 /* LaunchScreen.storyboard */,
 				85AD45B41CD3880F007B0B83 /* Info.plist */,
@@ -143,6 +163,7 @@
 		85AD45D61CD39AE2007B0B83 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				8553F9661CE88D83006A871E /* User.swift */,
 				85AD45D71CD39B14007B0B83 /* Quastionnaire.swift */,
 				85AD45D91CD39C8E007B0B83 /* QuestionGroup.swift */,
 				85AD45DB1CD39D94007B0B83 /* Question.swift */,
@@ -285,10 +306,17 @@
 				85AD45A81CD3880F007B0B83 /* LoginController.swift in Sources */,
 				85AD45D81CD39B14007B0B83 /* Quastionnaire.swift in Sources */,
 				85AD45A61CD3880F007B0B83 /* AppDelegate.swift in Sources */,
+				85E39F841CF23D600022FFE7 /* QuestionnaireViewController.swift in Sources */,
+				85E39F821CF216440022FFE7 /* QuestionnaireTableViewController.swift in Sources */,
+				85E39F861CF2488E0022FFE7 /* QuestionGroupTableViewController.swift in Sources */,
 				85AD45DE1CD39E52007B0B83 /* Answer.swift in Sources */,
 				85AD45DC1CD39D94007B0B83 /* Question.swift in Sources */,
 				85AD45E01CD39FD0007B0B83 /* Config.swift in Sources */,
+				85E39F881CF249410022FFE7 /* QuestionGroupTableViewCell.swift in Sources */,
+				8553F9651CE88CCF006A871E /* ApiDriver.swift in Sources */,
+				85E39F801CF2101A0022FFE7 /* QuestionnaireTableViewCell.swift in Sources */,
 				85AD45DA1CD39C8E007B0B83 /* QuestionGroup.swift in Sources */,
+				8553F9671CE88D83006A871E /* User.swift in Sources */,
 				85AD45AE1CD3880F007B0B83 /* crowd_gaming.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -516,6 +544,7 @@
 				85AD45CF1CD3880F007B0B83 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		85AD45D01CD3880F007B0B83 /* Build configuration list for PBXNativeTarget "crowd-gamingTests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +553,7 @@
 				85AD45D21CD3880F007B0B83 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		85AD45D31CD3880F007B0B83 /* Build configuration list for PBXNativeTarget "crowd-gamingUITests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +562,7 @@
 				85AD45D51CD3880F007B0B83 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

@@ -11,17 +11,29 @@ import Foundation
 class QuestionGroup{
     
     var id : Int
-    var latitude : Double
-    var longitude : Double
-    var radius : Double
+    var name: String
+    var latitude : Double?
+    var longitude : Double?
+    var radius : Double?
     var creationDate : String
     var questions = [Question]()
     
-    init ( id qId : Int , latitude qLatitude : Double , longitude qLongitude : Double , radius qRadius : Double , creationDate qCreationDate : String){
+    var answeredQuestions : Int
+    var totalQuestions : Int
+    
+    var allowedRepeats : Int
+    var currentRepeats : Int
+    
+    init ( id qId : Int , name qName : String , latitude qLatitude : Double? , longitude qLongitude : Double? , radius qRadius : Double? , creationDate qCreationDate : String , answeredQuestions qAnsweredQuestions : Int , currentQuestion qCurrentQuestions : Int , allowedRepeats qAllowedRepeats : Int , currentRepeats qCurrentRepeats: Int){
         id = qId
+        name = qName
         latitude = qLatitude
         longitude = qLongitude
         radius = qRadius
         creationDate = qCreationDate
+        answeredQuestions = qAnsweredQuestions
+        totalQuestions = qCurrentQuestions
+        allowedRepeats = qAllowedRepeats
+        currentRepeats = qCurrentQuestions
     }
 }
