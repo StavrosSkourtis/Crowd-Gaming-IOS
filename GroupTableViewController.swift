@@ -1,32 +1,35 @@
 //
-//  QuestionGroupTableViewController.swift
+//  GroupTableViewController.swift
 //  crowd-gaming
 //
-//  Created by AMD OS X on 22/05/2016.
+//  Created by AMD OS X on 24/05/2016.
 //  Copyright © 2016 Stavros Skourtis. All rights reserved.
 //
 
 import UIKit
 
-class QuestionGroupTableViewController: UITableViewController {
+class GroupTableViewController: UITableViewController {
     
-    var questionGroups = [QuestionGroup]()
-    var questionnaireId : Int!
+    
+    // MARK: Properties
+    
+    var groups = [QuestionGroup]()
+    var questionnaireId : Int = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        loadQuestionGroups()
+        loadGroups();
     }
     
-    func loadQuestionGroups()
+    func loadGroups()
     {
-        // create post request
         let url = NSURL(string: ( ApiConfig.apiUrl + "questionnaire/\(questionnaireId)/group" ))
         let request = NSMutableURLRequest(URL: url!)
         request.HTTPMethod = "POST"
         
-        request.setValue("\(ApiConfig.currentUser!.token)", forHTTPHeaderField: "Authorization")
+        request.setValue("6d4636424715dc66dd6ed2852f96587bf1478669", forHTTPHeaderField: "Authorization")
+        //request.setValue("\(ApiConfig.currentUser!.token)", forHTTPHeaderField: "Authorization")
         
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
             guard error == nil && data != nil else {                                                          // check for fundamental networking error
@@ -47,6 +50,7 @@ class QuestionGroupTableViewController: UITableViewController {
                 print("In Here")
                 for item in questionGroupsArrayJson
                 {
+                    
                     let groupInfo = item as! NSDictionary
                     
                     let id : Int = groupInfo["id"] as! Int
@@ -54,8 +58,8 @@ class QuestionGroupTableViewController: UITableViewController {
                     let creationDate: String = groupInfo["creation_date"] as! String
                     let totalQuestions: Int = groupInfo["total-questions"] as! Int
                     let answeredQuestions: Int = groupInfo["answered-questions"] as! Int
-                    //let allowedRepeats: Int = groupInfo["allowed-repeats"] as! Int
-                    //let currentRepeats: Int = groupInfo["current-repeats"] as! Int
+                    let allowedRepeats: Int = groupInfo["allowed-repeats"] as! Int
+                    let currentRepeats: Int = groupInfo["current-repeats"] as! Int
                     var latitude: Double? = nil
                     
                     if let lat = groupInfo["latitude"]
@@ -77,29 +81,30 @@ class QuestionGroupTableViewController: UITableViewController {
                     {
                         radius = rad as? Double
                     }
-                    
-                    
-                    let questionGroup = QuestionGroup(id: id, name: name, latitude: latitude, longitude: longitude, radius: radius, creationDate: creationDate, answeredQuestions: answeredQuestions, currentQuestion: totalQuestions , allowedRepeats: 0 , currentRepeats: 0)
-                    
+                   
                     print("Question Group \(id)")
+                    
+                    
+                    
+                    let questionGroup = QuestionGroup(id: id, name: name, latitude: latitude, longitude: longitude, radius: radius, creationDate: creationDate, answeredQuestions: answeredQuestions, currentQuestion: totalQuestions , allowedRepeats: allowedRepeats , currentRepeats: currentRepeats)
+                    
+                   // let questionGroup = QuestionGroup(id: 12, name: "Question group new-name", latitude: 12, longitude: 12, radius: 21, creationDate: "12", answeredQuestions: 1, currentQuestion: 32, allowedRepeats: 4, currentRepeats: 2)
                     
                     dispatch_sync(dispatch_get_main_queue(),
                     {
-                        self.questionGroups.append(questionGroup)
+                            self.groups += [questionGroup]
                     })
                 }
             }
-            dispatch_sync(dispatch_get_main_queue(),
-                {
-                    self.loadView()
-            })
             
             print("Loading Question Group Completed")
             
-            
+            dispatch_sync(dispatch_get_main_queue(),
+            {
+                self.loadView()
+            })
         }
         task.resume()
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -110,30 +115,26 @@ class QuestionGroupTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return questionGroups.count
+        return groups.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let callIdentifier = "GroupTableViewCell"
+        let cell = tableView.dequeueReusableCellWithIdentifier(callIdentifier, forIndexPath: indexPath) as! GroupTableViewCell
         
-        let callIdentifier = "QuestionGroupTableViewCell"
-        let cell = tableView.dequeueReusableCellWithIdentifier(callIdentifier, forIndexPath: indexPath) as! QuestionGroupTableViewCell
+        let group = groups[indexPath.row]
         
-        
-        //let questionGroup = questionGroups[indexPath.row]
-        
-        //cell.questionGroupNameLabel.text = questionGroup.name
-        //cell.progressLabel.text = "Progress \(questionGroup.answeredQuestions)/\(questionGroup.totalQuestions)"
-        
+        cell.questionGroupName.text = group.name
+        cell.progressLabel.text = "\(group.answeredQuestions) / \(group.totalQuestions)"
+
         return cell
     }
-
+    
 
     /*
     // Override to support conditional editing of the table view.

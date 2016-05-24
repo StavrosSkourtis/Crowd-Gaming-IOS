@@ -1,18 +1,20 @@
 //
-//  QuestionGroupTableViewCell.swift
+//  GroupTableViewCell.swift
 //  crowd-gaming
 //
-//  Created by AMD OS X on 22/05/2016.
+//  Created by AMD OS X on 24/05/2016.
 //  Copyright © 2016 Stavros Skourtis. All rights reserved.
 //
 
 import UIKit
 
-class QuestionGroupTableViewCell: UITableViewCell {
+class GroupTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var questionGroupNameLabel: UILabel!
-    @IBOutlet weak var progressLabel: UILabel!
+    // MARK: Properties
     
+    @IBOutlet weak var questionGroupName: UILabel!
+    
+    @IBOutlet weak var progressLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

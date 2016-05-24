@@ -144,6 +144,65 @@
             </objects>
             <point key="canvasLocation" x="1426" y="237"/>
         </scene>
+        <!--Group Table View Controller-->
+        <scene sceneID="naD-yJ-1aT">
+            <objects>
+                <tableViewController id="hed-zD-iN9" customClass="GroupTableViewController" customModule="crowd_gaming" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" sectionHeaderHeight="28" sectionFooterHeight="28" id="cra-ma-eNs">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="GroupTableViewCell" rowHeight="120" id="sfw-7r-VZA" customClass="GroupTableViewCell" customModule="crowd_gaming" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="600" height="120"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sfw-7r-VZA" id="Ta0-ha-UJu">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="119"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Question group Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYf-GC-Rw3">
+                                            <rect key="frame" x="8" y="8" width="168" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Progress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M3P-hx-07p">
+                                            <rect key="frame" x="8" y="49" width="68" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sB0-Kq-XeB">
+                                            <rect key="frame" x="8" y="81" width="30" height="30"/>
+                                            <state key="normal" title="Play"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kio-Go-KtQ">
+                                            <rect key="frame" x="59" y="81" width="39" height="30"/>
+                                            <state key="normal" title="Reset"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fcT-qd-A86">
+                                            <rect key="frame" x="115" y="81" width="89" height="30"/>
+                                            <state key="normal" title="View on Map"/>
+                                        </button>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="progressLabel" destination="M3P-hx-07p" id="WAe-mx-nnV"/>
+                                    <outlet property="questionGroupName" destination="aYf-GC-Rw3" id="Enc-aL-7HG"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="hed-zD-iN9" id="8J1-sE-AmT"/>
+                            <outlet property="delegate" destination="hed-zD-iN9" id="vj7-wv-pTi"/>
+                        </connections>
+                    </tableView>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6h3-f8-Yvl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2146" y="1093"/>
+        </scene>
         <!--Questionnaire-->
         <scene sceneID="BBs-RT-VWO">
             <objects>
@@ -162,28 +221,28 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KLw-fy-NqK">
-                                <rect key="frame" x="20" y="58" width="50" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KLw-fy-NqK">
+                                <rect key="frame" x="20" y="58" width="34" height="14"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IPG-61-flr">
-                                <rect key="frame" x="25" y="94" width="153" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IPG-61-flr">
+                                <rect key="frame" x="25" y="87" width="153" height="30"/>
                                 <state key="normal" title="View Question Groups"/>
                                 <connections>
                                     <action selector="viewQuestionGroups:" destination="veI-8j-Lhe" eventType="touchUpInside" id="Qbz-Zq-sll"/>
-                                    <segue destination="5op-sp-K5y" kind="show" id="DBW-od-sAv"/>
+                                    <segue destination="hed-zD-iN9" kind="show" id="CqC-qq-YhR"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ata-1e-MeX">
-                                <rect key="frame" x="20" y="150" width="560" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ata-1e-MeX">
+                                <rect key="frame" x="20" y="143" width="560" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TSo-Sl-BK9">
-                                <rect key="frame" x="533" y="58" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TSo-Sl-BK9">
+                                <rect key="frame" x="541" y="59" width="29" height="14"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -218,123 +277,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fOl-Q9-yJo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1426" y="1101"/>
-        </scene>
-        <!--Question Group Table View Controller-->
-        <scene sceneID="bQr-Ph-2nb">
-            <objects>
-                <tableViewController id="5op-sp-K5y" customClass="QuestionGroupTableViewController" customModule="crowd_gaming" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="U0J-Au-waX">
-                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="QuestionGroupTableViewCell" rowHeight="90" id="u9Z-xO-H9r" customClass="QuestionGroupTableViewCell" customModule="crowd_gaming" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="90"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="u9Z-xO-H9r" id="K75-G7-bOL">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="89"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Question Group Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gKx-Vk-OlA">
-                                            <rect key="frame" x="8" y="0.0" width="584" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gek-Xq-Sl5">
-                                            <rect key="frame" x="8" y="51" width="30" height="30"/>
-                                            <state key="normal" title="Play"/>
-                                            <connections>
-                                                <segue destination="kqg-Sp-d0S" kind="show" identifier="PlaySegue" id="mhH-pj-SMg"/>
-                                            </connections>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yI9-OY-R79">
-                                            <rect key="frame" x="46" y="51" width="89" height="30"/>
-                                            <state key="normal" title="View on Map"/>
-                                            <connections>
-                                                <segue destination="fa6-tv-GMQ" kind="show" identifier="ShowMap" id="86i-S8-IZA"/>
-                                            </connections>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p3q-HX-l9T">
-                                            <rect key="frame" x="143" y="51" width="39" height="30"/>
-                                            <state key="normal" title="Reset"/>
-                                        </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Progress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9lK-UI-9qc">
-                                            <rect key="frame" x="190" y="55" width="68" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="gKx-Vk-OlA" firstAttribute="leading" secondItem="K75-G7-bOL" secondAttribute="leadingMargin" id="YxM-6f-FQk"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="gKx-Vk-OlA" secondAttribute="trailing" id="xIF-1A-gdh"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="progressLabel" destination="K75-G7-bOL" id="hCR-Js-aqr"/>
-                                    <outlet property="questionGroupName" destination="K75-G7-bOL" id="imd-yw-Fgt"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="5op-sp-K5y" id="2aK-d4-VK0"/>
-                            <outlet property="delegate" destination="5op-sp-K5y" id="l8E-0D-kWH"/>
-                        </connections>
-                    </tableView>
-                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aXX-oY-WzB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2381" y="225"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="k0X-ws-RLn">
-            <objects>
-                <viewController id="kqg-Sp-d0S" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ZpZ-LR-oNk"/>
-                        <viewControllerLayoutGuide type="bottom" id="r1m-92-xJ4"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="vZK-3n-erF">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7GK-wA-NKe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3309" y="225"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="hNl-ml-Wlr">
-            <objects>
-                <viewController id="fa6-tv-GMQ" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="edQ-mY-33Z"/>
-                        <viewControllerLayoutGuide type="bottom" id="KhD-ym-7KU"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="wBs-VG-ywJ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rEz-lF-47j">
-                                <rect key="frame" x="20" y="0.0" width="560" height="600"/>
-                            </mapView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="KhD-ym-7KU" firstAttribute="top" secondItem="rEz-lF-47j" secondAttribute="bottom" id="3qu-ZT-8lH"/>
-                            <constraint firstItem="rEz-lF-47j" firstAttribute="leading" secondItem="wBs-VG-ywJ" secondAttribute="leadingMargin" id="cJY-Nt-MNO"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="rEz-lF-47j" secondAttribute="trailing" id="dVj-oi-qG0"/>
-                            <constraint firstItem="rEz-lF-47j" firstAttribute="top" secondItem="wBs-VG-ywJ" secondAttribute="topMargin" id="p4k-gb-gE0"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="htt-xf-SgJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2381" y="1101"/>
+            <point key="canvasLocation" x="1426" y="1085"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7Yp-b7-87o">
