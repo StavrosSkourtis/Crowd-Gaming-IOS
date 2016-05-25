@@ -27,6 +27,7 @@
 		85E39F801CF2101A0022FFE7 /* QuestionnaireTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E39F7F1CF2101A0022FFE7 /* QuestionnaireTableViewCell.swift */; };
 		85E39F821CF216440022FFE7 /* QuestionnaireTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E39F811CF216440022FFE7 /* QuestionnaireTableViewController.swift */; };
 		85E39F841CF23D600022FFE7 /* QuestionnaireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E39F831CF23D600022FFE7 /* QuestionnaireViewController.swift */; };
+		85E8A6831CF616D60015BC00 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E8A6821CF616D60015BC00 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		85E39F7F1CF2101A0022FFE7 /* QuestionnaireTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionnaireTableViewCell.swift; sourceTree = "<group>"; };
 		85E39F811CF216440022FFE7 /* QuestionnaireTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionnaireTableViewController.swift; sourceTree = "<group>"; };
 		85E39F831CF23D600022FFE7 /* QuestionnaireViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionnaireViewController.swift; sourceTree = "<group>"; };
+		85E8A6821CF616D60015BC00 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 				8553F9641CE88CCF006A871E /* ApiDriver.swift */,
 				85AD45DF1CD39FD0007B0B83 /* Config.swift */,
 				85AD45A91CD3880F007B0B83 /* Main.storyboard */,
+				85E8A6821CF616D60015BC00 /* MapViewController.swift */,
 				85DB61121CF4B962009AAC18 /* GroupTableViewCell.swift */,
 				85DB61161CF4BD52009AAC18 /* GroupTableViewController.swift */,
 				85E39F811CF216440022FFE7 /* QuestionnaireTableViewController.swift */,
@@ -318,6 +321,7 @@
 				85AD45DA1CD39C8E007B0B83 /* QuestionGroup.swift in Sources */,
 				8553F9671CE88D83006A871E /* User.swift in Sources */,
 				85AD45AE1CD3880F007B0B83 /* crowd_gaming.xcdatamodeld in Sources */,
+				85E8A6831CF616D60015BC00 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

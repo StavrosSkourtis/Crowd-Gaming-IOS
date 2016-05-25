@@ -24,12 +24,14 @@ class GroupTableViewController: UITableViewController {
     
     func loadGroups()
     {
+        
         let url = NSURL(string: ( ApiConfig.apiUrl + "questionnaire/\(questionnaireId)/group" ))
+        
         let request = NSMutableURLRequest(URL: url!)
         request.HTTPMethod = "POST"
         
-        request.setValue("6d4636424715dc66dd6ed2852f96587bf1478669", forHTTPHeaderField: "Authorization")
-        //request.setValue("\(ApiConfig.currentUser!.token)", forHTTPHeaderField: "Authorization")
+        //request.setValue("6d4636424715dc66dd6ed2852f96587bf1478669", forHTTPHeaderField: "Authorization")
+        request.setValue("\(ApiConfig.currentUser!.token)", forHTTPHeaderField: "Authorization")
         
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
             guard error == nil && data != nil else {                                                          // check for fundamental networking error
@@ -60,15 +62,14 @@ class GroupTableViewController: UITableViewController {
                     let answeredQuestions: Int = groupInfo["answered-questions"] as! Int
                     let allowedRepeats: Int = groupInfo["allowed-repeats"] as! Int
                     let currentRepeats: Int = groupInfo["current-repeats"] as! Int
+                   
                     var latitude: Double? = nil
-                    
                     if let lat = groupInfo["latitude"]
                     {
                         latitude = lat as? Double
                     }
                     
                     var longitude: Double? = nil
-                    
                     if let long = groupInfo["longitude"]
                     {
                         longitude = long as? Double
@@ -76,19 +77,20 @@ class GroupTableViewController: UITableViewController {
                     
                     
                     var radius: Double? = nil
-                    
                     if let rad = groupInfo["radius"]
                     {
                         radius = rad as? Double
                     }
                    
+                    
+                    
                     print("Question Group \(id)")
                     
                     
                     
                     let questionGroup = QuestionGroup(id: id, name: name, latitude: latitude, longitude: longitude, radius: radius, creationDate: creationDate, answeredQuestions: answeredQuestions, currentQuestion: totalQuestions , allowedRepeats: allowedRepeats , currentRepeats: currentRepeats)
                     
-                   // let questionGroup = QuestionGroup(id: 12, name: "Question group new-name", latitude: 12, longitude: 12, radius: 21, creationDate: "12", answeredQuestions: 1, currentQuestion: 32, allowedRepeats: 4, currentRepeats: 2)
+                    // let questionGroup = QuestionGroup(id: 12, name: "Question group new-name", latitude: 12, longitude: 12, radius: 21, creationDate: "12", answeredQuestions: 1, currentQuestion: 32, allowedRepeats: 4, currentRepeats: 2)
                     
                     dispatch_sync(dispatch_get_main_queue(),
                     {
@@ -98,10 +100,11 @@ class GroupTableViewController: UITableViewController {
             }
             
             print("Loading Question Group Completed")
+
             
             dispatch_sync(dispatch_get_main_queue(),
             {
-                self.loadView()
+                self.tableView.reloadData()
             })
         }
         task.resume()
@@ -130,8 +133,31 @@ class GroupTableViewController: UITableViewController {
         let group = groups[indexPath.row]
         
         cell.questionGroupName.text = group.name
-        cell.progressLabel.text = "\(group.answeredQuestions) / \(group.totalQuestions)"
-
+        cell.progressLabel.text = "Questions: \(group.answeredQuestions)/\(group.totalQuestions)   Iterations :\(group.currentRepeats)/\(group.allowedRepeats)"
+        
+        if group.answeredQuestions == group.totalQuestions
+        {
+            cell.playButton.enabled = false
+        }
+        
+        if  let _=group.latitude,
+            let _=group.longitude,
+            let _=group.radius
+        {
+            cell.viewOnMapButton.enabled = true
+        }
+        else
+        {
+            cell.viewOnMapButton.enabled = false
+        }
+        
+        if group.currentRepeats == group.allowedRepeats
+        {
+            cell.resetButton.enabled = false
+        }
+        
+        cell.viewController = self
+        
         return cell
     }
     
@@ -171,14 +197,24 @@ class GroupTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        
+        let mapViewController = segue.destinationViewController as! MapViewController
+
+        if let selectedGroupCell = sender as? GroupTableViewCell
+        {
+            let index = tableView.indexPathForCell(selectedGroupCell)!
+            let selectedGroup = groups[index.row]
+            
+            mapViewController.group = selectedGroup
+        }
+
+        
     }
-    */
 
 }

@@ -24,6 +24,7 @@ class QuestionnaireTableViewController: UITableViewController {
     
     func getQuestionnaires()
     {
+        
         // create post request
         let url = NSURL(string: ( ApiConfig.apiUrl + "questionnaire" ))
         let request = NSMutableURLRequest(URL: url!)
@@ -36,6 +37,7 @@ class QuestionnaireTableViewController: UITableViewController {
                 print("error=\(error)")
                 return
             }
+
             
             if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode != 200 {           // check for http errors
                 print("statusCode should be 200, but is \(httpStatus.statusCode)")
@@ -139,6 +141,7 @@ class QuestionnaireTableViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
+        ///*
         let questionnaireViewController = segue.destinationViewController as! QuestionnaireViewController
         
         if let selectedQuestionnaireCell = sender as? QuestionnaireTableViewCell
@@ -148,6 +151,18 @@ class QuestionnaireTableViewController: UITableViewController {
             
             questionnaireViewController.questionnaire = selectedQuestionnaire
         }
+
+        /*
+        let questionnaireViewController = segue.destinationViewController as! GroupTableViewController
+        
+        if let selectedQuestionnaireCell = sender as? QuestionnaireTableViewCell
+        {
+            let index = tableView.indexPathForCell(selectedQuestionnaireCell)!
+            let selectedQuestionnaire = questionnaires[index.row]
+            
+            questionnaireViewController.questionnaireId = selectedQuestionnaire.id
+        }
+        */
         
     }
     

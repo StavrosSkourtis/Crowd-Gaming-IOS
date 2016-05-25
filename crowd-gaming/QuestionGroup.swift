@@ -34,6 +34,6 @@ class QuestionGroup{
         answeredQuestions = qAnsweredQuestions
         totalQuestions = qCurrentQuestions
         allowedRepeats = qAllowedRepeats
-        currentRepeats = qCurrentQuestions
+        currentRepeats = qCurrentRepeats
     }
 }

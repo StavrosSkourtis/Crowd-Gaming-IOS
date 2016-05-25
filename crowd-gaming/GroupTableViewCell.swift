@@ -13,8 +13,14 @@ class GroupTableViewCell: UITableViewCell {
     // MARK: Properties
     
     @IBOutlet weak var questionGroupName: UILabel!
-    
     @IBOutlet weak var progressLabel: UILabel!
+    @IBOutlet weak var viewOnMapButton: UIButton!
+    @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet weak var playButton: UIButton!
+    
+    var viewController : GroupTableViewController?
+    
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,6 +31,14 @@ class GroupTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    // MARK: Actions
+    
+    @IBAction func OnViewOnMap(sender: AnyObject) {
+        
+        viewController!.performSegueWithIdentifier("goToMapViewSegue", sender: self)
+        print("Clicked")
     }
 
 }
