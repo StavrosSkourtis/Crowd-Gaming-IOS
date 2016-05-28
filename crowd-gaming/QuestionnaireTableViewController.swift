@@ -17,8 +17,26 @@ class QuestionnaireTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        let _ = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "onTimer", userInfo: nil, repeats: true)
+        
         getQuestionnaires()
+    }
+    
+    func onTimer(){
+        
+        for questionnaire in questionnaires {
+            
+            if questionnaire.timeLeftToStart > 0
+            {
+                questionnaire.timeLeftToStart--;
+            }
+            else if questionnaire.timeLeftToEnd > 0
+            {
+                questionnaire.timeLeftToEnd--;
+            }
+        }
+        
+        self.tableView.reloadData()
     }
     
     
@@ -75,7 +93,7 @@ class QuestionnaireTableViewController: UITableViewController {
             }
             dispatch_sync(dispatch_get_main_queue(),
             {
-                self.loadView()
+                self.tableView.reloadData()
             })
             
             print("Loading Questionnaires Completed")
@@ -119,13 +137,13 @@ class QuestionnaireTableViewController: UITableViewController {
         if questionnaire.timeLeftToStart == 0
         {
             let (d,h,m,s) = secondsToHoursMinutesSeconds(questionnaire.timeLeftToEnd)
-            cell.statusLabel.text = "Online, Time left \(d) days and \(h):\(m):\(s)"
+            cell.statusLabel.text = "Time left \(d)d \(h)h \(m)m \(s)s"
             cell.statusLabel.textColor = UIColor(red: 5/255.0 , green: 86/255.0 , blue: 9/255.0 , alpha: 1)
         }
         else if questionnaire.timeLeftToStart > 0
         {
             let (d,h,m,s) = secondsToHoursMinutesSeconds(questionnaire.timeLeftToStart)
-            cell.statusLabel.text = "Starts in \(d) days and \(h):\(m):\(s)"
+            cell.statusLabel.text = "Starts in \(d)d \(h)h \(m)m \(s)s"
         }
         else
         {

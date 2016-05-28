@@ -33,13 +33,13 @@ class QuestionnaireViewController: UIViewController {
         if questionnaire.timeLeftToStart == 0
         {
             let (d,h,m,s) = secondsToHoursMinutesSeconds(questionnaire.timeLeftToEnd)
-            statusLabel.text = "Online, Time left \(d) days and \(h):\(m):\(s)"
+            statusLabel.text = "Time left \(d)d \(h)h \(m)m \(s)s"
             statusLabel.textColor = UIColor(red: 5/255.0 , green: 86/255.0 , blue: 9/255.0 , alpha: 1)
         }
         else if questionnaire.timeLeftToStart > 0
         {
             let (d,h,m,s) = secondsToHoursMinutesSeconds(questionnaire.timeLeftToStart)
-            statusLabel.text = "Starts in \(d) days and \(h):\(m):\(s)"
+            statusLabel.text = "Starts in \(d)d \(h)h \(m)m \(s)s"
         }
         else
         {
@@ -47,6 +47,37 @@ class QuestionnaireViewController: UIViewController {
             statusLabel.textColor = UIColor(red: 179/255.0 , green: 9/255.0 , blue: 9/255.0 , alpha: 1)
         }
         
+        let _ = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "onTimer", userInfo: nil, repeats: true)
+        
+    }
+    
+    func onTimer(){
+        
+        if questionnaire.timeLeftToStart > 0
+        {
+            questionnaire.timeLeftToStart--;
+        }
+        else if questionnaire.timeLeftToEnd > 0
+        {
+            questionnaire.timeLeftToEnd--;
+        }
+        
+        if questionnaire.timeLeftToStart == 0
+        {
+            let (d,h,m,s) = secondsToHoursMinutesSeconds(questionnaire.timeLeftToEnd)
+            statusLabel.text = "Time left \(d)d \(h)h \(m)m \(s)s"
+            statusLabel.textColor = UIColor(red: 5/255.0 , green: 86/255.0 , blue: 9/255.0 , alpha: 1)
+        }
+        else if questionnaire.timeLeftToStart > 0
+        {
+            let (d,h,m,s) = secondsToHoursMinutesSeconds(questionnaire.timeLeftToStart)
+            statusLabel.text = "Starts in \(d)d \(h)h \(m)m \(s)s"
+        }
+        else
+        {
+            statusLabel.text = "Offline"
+            statusLabel.textColor = UIColor(red: 179/255.0 , green: 9/255.0 , blue: 9/255.0 , alpha: 1)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,7 +98,7 @@ class QuestionnaireViewController: UIViewController {
         
         let groupTableViewController = segue.destinationViewController as! GroupTableViewController
         
-        groupTableViewController.questionnaireId = questionnaire.id
+        groupTableViewController.questionnaire = questionnaire
         
     }
 

@@ -18,17 +18,21 @@ class QuestionViewController: UIViewController ,CLLocationManagerDelegate{
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
     
     @IBOutlet weak var answerButton1: UIButton!
     @IBOutlet weak var answerButton2: UIButton!
     @IBOutlet weak var answerButton3: UIButton!
     @IBOutlet weak var answerButton4: UIButton!
+    @IBOutlet weak var actionButton: UIButton!
+    
     
     var userLatitude : Double?;
     var userLongitude : Double?;
     
-    
+    var answerChoise : Int = 0;
     var locationManager :CLLocationManager!
+    var buttonIsConfirm = true;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +43,28 @@ class QuestionViewController: UIViewController ,CLLocationManagerDelegate{
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
         
+        let _ = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "onTimer", userInfo: nil, repeats: true)
+        
         loadNextQuestion()
+    }
+    
+    func onTimer()
+    {
+        if let _ = question {
+            if( buttonIsConfirm )
+            {
+                if( question?.timeToAnswer == 0 )
+                {
+                    postAnswer(0);
+                }
+                else
+                {
+                    statusLabel.text = String(format: "Time left: %.0fs", question!.timeToAnswer)
+                    question!.timeToAnswer--;
+                }
+                
+            }
+        }
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -47,7 +72,7 @@ class QuestionViewController: UIViewController ,CLLocationManagerDelegate{
         
         userLatitude = locValue.latitude
         userLongitude = locValue.longitude
-        print("locations = \(locValue.latitude) \(locValue.longitude)")
+        //print("locations = \(locValue.latitude) \(locValue.longitude)")
     }
 
     override func didReceiveMemoryWarning() {
@@ -148,22 +173,32 @@ class QuestionViewController: UIViewController ,CLLocationManagerDelegate{
                         self.questionLabel.text = self.question!.questionText
                         
                         self.answerButton1.setTitle( self.answers[0].answerText, forState: .Normal)
+                        self.answerButton1.backgroundColor = UIColor(red: 77/255.0, green: 195/255.0, blue: 1, alpha: 1)
                         self.answerButton2.setTitle( self.answers[1].answerText, forState: .Normal)
+                        self.answerButton2.backgroundColor = UIColor(red: 77/255.0, green: 195/255.0, blue: 1, alpha: 1)
                         
                         if self.answers.count >= 3 {
                             self.answerButton3.setTitle( self.answers[2].answerText, forState: .Normal)
+                            self.answerButton3.backgroundColor = UIColor(red: 77/255.0, green: 195/255.0, blue: 1, alpha: 1)
+                            self.answerButton3.enabled = true
                         }
                         else{
                             self.answerButton3.setTitle( "", forState: .Normal)
                             self.answerButton3.enabled = false
+                            self.answerButton3.backgroundColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 0)
                         }
                         
                         if self.answers.count >= 4 {
                             self.answerButton4.setTitle( self.answers[3].answerText, forState: .Normal)
+                            self.answerButton4.backgroundColor = UIColor(red: 77/255.0, green: 195/255.0, blue: 1, alpha: 1)
+                            self.answerButton4.enabled = true
                         }else{
                             self.answerButton4.setTitle( "", forState: .Normal)
                             self.answerButton4.enabled = false;
+                            self.answerButton4.backgroundColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 0)
                         }
+                        self.buttonIsConfirm = true;
+                        self.actionButton.setTitle("Confirm", forState: .Normal)
                     })
                     
                     
@@ -287,42 +322,23 @@ class QuestionViewController: UIViewController ,CLLocationManagerDelegate{
                     
                     case "200":
                         print ("200")
+                        if self.answerChoise == 0 {
+                            self.statusLabel.text = "Timer run out"
+                        }else{
+                            self.statusLabel.text = "Answer was posted."
+                        }
                         self.group?.answeredQuestions += 1
-                    case "603":
-                        print ("603")
-                        let alert = UIAlertController(title: "Error", message: "Questionnaire is offline!", preferredStyle: UIAlertControllerStyle.Alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                        self.presentViewController(alert, animated: true, completion: nil)
-                    case "605":
-                        print ("605")
-                        let alert = UIAlertController(title: "Error", message: "You cant answer this question.", preferredStyle: UIAlertControllerStyle.Alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                        self.presentViewController(alert, animated: true, completion: nil)
-                    case "606":
-                        print ("606")
-                        let alert = UIAlertController(title: "Error", message: "You didnt provide coordinates", preferredStyle: UIAlertControllerStyle.Alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                        self.presentViewController(alert, animated: true, completion: nil)
-                    case "607":
-                        print ("607")
-                        let alert = UIAlertController(title: "Error", message: "Invalid location!", preferredStyle: UIAlertControllerStyle.Alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                        self.presentViewController(alert, animated: true, completion: nil)
-                    case "500":
-                        print ("500")
-                        let alert = UIAlertController(title: "Error", message: "Internal Server Error", preferredStyle: UIAlertControllerStyle.Alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                        self.presentViewController(alert, animated: true, completion: nil)
-                    case "610":
-                        print ("610")
-                        let alert = UIAlertController(title: "Error", message: "No data given", preferredStyle: UIAlertControllerStyle.Alert)
+                    case "603" , "605" , "606" , "607" , "500" , "610":
+                        let alert = UIAlertController(title: "Error", message: json["message"] as! String, preferredStyle: UIAlertControllerStyle.Alert)
                         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
                         self.presentViewController(alert, animated: true, completion: nil)
                     default:
                         print ("No code mate")
                         break
                     }
-                    self.loadNextQuestion()
+                    self.buttonIsConfirm = false
+                    self.actionButton.setTitle("Next Question", forState: .Normal)
+                    //self.loadNextQuestion()
                 }
                 else
                 {
@@ -339,23 +355,76 @@ class QuestionViewController: UIViewController ,CLLocationManagerDelegate{
     
     
     @IBAction func OnAction(sender: AnyObject) {
-        postAnswer(0)
+        
+        if buttonIsConfirm && answerChoise != 0
+        {
+            postAnswer(answerChoise)
+        }
+        else if buttonIsConfirm && answerChoise == 0
+        {
+            // nothing for now
+        }
+        else
+        {
+            loadNextQuestion();
+        }
+        
     }
     
     @IBAction func OnAnswer1(sender: AnyObject) {
-        postAnswer(1)
+        answerChoise = 1;
+        
+        answerButton1.backgroundColor = UIColor(red: 204/255.0, green: 235/255.0, blue: 1, alpha: 1)
+        answerButton2.backgroundColor = UIColor(red: 77/255.0, green: 195/255.0, blue: 1, alpha: 1)
+        if( answers.count >= 3 )
+        {
+            answerButton3.backgroundColor = UIColor(red: 77/255.0, green: 195/255.0, blue: 1, alpha: 1)
+        }
+        if( answers.count == 4)
+        {
+            answerButton4.backgroundColor = UIColor(red: 77/255.0, green: 195/255.0, blue: 1, alpha: 1)
+        }
     }
     
     @IBAction func OnAnswer2(sender: AnyObject) {
-        postAnswer(2)
+        answerChoise = 2
+        
+        answerButton2.backgroundColor = UIColor(red: 204/255.0, green: 235/255.0, blue: 1, alpha: 1)
+        answerButton1.backgroundColor = UIColor(red: 77/255.0, green: 195/255.0, blue: 1, alpha: 1)
+        if( answers.count >= 3 )
+        {
+            answerButton3.backgroundColor = UIColor(red: 77/255.0, green: 195/255.0, blue: 1, alpha: 1)
+        }
+        if( answers.count == 4)
+        {
+            answerButton4.backgroundColor = UIColor(red: 77/255.0, green: 195/255.0, blue: 1, alpha: 1)
+        }
     }
     
     @IBAction func OnAnswer3(sender: AnyObject) {
-        postAnswer(3)
+        if answers.count >= 3
+        {
+            answerChoise = 3;
+            answerButton1.backgroundColor = UIColor(red: 77/255.0, green: 195/255.0, blue: 1, alpha: 1)
+            answerButton2.backgroundColor = UIColor(red: 77/255.0, green: 195/255.0, blue: 1, alpha: 1)
+            answerButton3.backgroundColor = UIColor(red: 204/255.0, green: 235/255.0, blue: 1, alpha: 1)
+            if( answers.count == 4 )
+            {
+                answerButton4.backgroundColor = UIColor(red: 77/255.0, green: 195/255.0, blue: 1, alpha: 1)
+            }
+        }
     }
     
     @IBAction func OnAction4(sender: AnyObject) {
-        postAnswer(4)
+        if answers.count == 4
+        {
+            answerChoise = 4
+            answerButton1.backgroundColor = UIColor(red: 77/255.0, green: 195/255.0, blue: 1, alpha: 1)
+            answerButton2.backgroundColor = UIColor(red: 77/255.0, green: 195/255.0, blue: 1, alpha: 1)
+            answerButton3.backgroundColor = UIColor(red: 77/255.0, green: 195/255.0, blue: 1, alpha: 1)
+            answerButton4.backgroundColor = UIColor(red: 204/255.0, green: 238/255.0, blue: 1, alpha: 1)
+            
+        }
     }
     
     

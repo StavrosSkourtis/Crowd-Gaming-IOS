@@ -15,7 +15,7 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
     // MARK: Properties
     
     var groups = [QuestionGroup]()
-    var questionnaireId : Int = 1
+    var questionnaire : Questionnaire!
     
     var userLatitude: Double?
     var userLongitude: Double?
@@ -30,7 +30,13 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
         
+        let _ = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: "onTimer", userInfo: nil, repeats: true)
+        
         loadGroups();
+    }
+    
+    func onTimer(){
+        tableView.reloadData();
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -38,13 +44,13 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
         
         userLatitude = locValue.latitude
         userLongitude = locValue.longitude
-        print("locations = \(locValue.latitude) \(locValue.longitude)")
+        //print("locations = \(locValue.latitude) \(locValue.longitude)")
     }
     
     func loadGroups()
     {
         
-        let url = NSURL(string: ( ApiConfig.apiUrl + "questionnaire/\(questionnaireId)/group" ))
+        let url = NSURL(string: ( ApiConfig.apiUrl + "questionnaire/\(questionnaire!.id)/group" ))
         
         let request = NSMutableURLRequest(URL: url!)
         request.HTTPMethod = "POST"
@@ -94,26 +100,22 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
                         longitude = long as? Double
                     }
                     
-                    
                     var radius: Double? = nil
                     if let rad = groupInfo["radius"]
                     {
                         radius = rad as? Double
                     }
-                   
-                    
                     
                     print("Question Group \(id)")
                     
                     
-                    
-                    let questionGroup = QuestionGroup(id: id, name: name, latitude: latitude, longitude: longitude, radius: radius, creationDate: creationDate, answeredQuestions: answeredQuestions, currentQuestion: totalQuestions , allowedRepeats: allowedRepeats , currentRepeats: currentRepeats , questionnaireId: self.questionnaireId)
+                    let questionGroup = QuestionGroup(id: id, name: name, latitude: latitude, longitude: longitude, radius: radius, creationDate: creationDate, answeredQuestions: answeredQuestions, currentQuestion: totalQuestions , allowedRepeats: allowedRepeats , currentRepeats: currentRepeats , questionnaireId: self.questionnaire.id)
                     
                     // let questionGroup = QuestionGroup(id: 12, name: "Question group new-name", latitude: 12, longitude: 12, radius: 21, creationDate: "12", answeredQuestions: 1, currentQuestion: 32, allowedRepeats: 4, currentRepeats: 2)
                     
                     dispatch_sync(dispatch_get_main_queue(),
                     {
-                            self.groups += [questionGroup]
+                        self.groups += [questionGroup]
                     })
                 }
             }
@@ -163,10 +165,12 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
             {
                 cell.distanceLabel.text = "On Location"
                 cell.distanceLabel.textColor = UIColor(red: 5/255.0 , green: 86/255.0 , blue: 9/255.0 , alpha: 1)
+                cell.playButton.enabled = true
             }
             else
             {
                 cell.distanceLabel.text = "\(String(format: "%.2f", distance-group.radius!))km away"
+                cell.playButton.enabled = false
             }
             
         }
@@ -178,6 +182,11 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
         
         
         if group.answeredQuestions == group.totalQuestions
+        {
+            cell.playButton.enabled = false
+        }
+        
+        if questionnaire.timeLeftToStart != 0
         {
             cell.playButton.enabled = false
         }
@@ -271,6 +280,8 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
                 let selectedGroup = groups[index.row]
                 
                 questionViewController.group = selectedGroup
+                questionViewController.userLatitude = userLatitude
+                questionViewController.userLongitude = userLongitude
             }
         }
         
