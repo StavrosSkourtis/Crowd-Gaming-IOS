@@ -55,7 +55,6 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
         let request = NSMutableURLRequest(URL: url!)
         request.HTTPMethod = "POST"
         
-        //request.setValue("6d4636424715dc66dd6ed2852f96587bf1478669", forHTTPHeaderField: "Authorization")
         request.setValue("\(ApiConfig.currentUser!.token)", forHTTPHeaderField: "Authorization")
         
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
@@ -156,6 +155,10 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
         cell.questionGroupName.text = group.name
         cell.progressLabel.text = "Questions: \(group.answeredQuestions)/\(group.totalQuestions)"
         cell.repeatLabel.text = "Repeats:\(group.currentRepeats)/\(group.allowedRepeats)"
+        cell.group = group;
+        cell.playButton.enabled = true;
+        cell.resetButton.enabled = true;
+        cell.viewOnMapButton.enabled = true;
         
         if let lat = userLatitude , let lon = userLongitude , let groupLat = group.latitude , let groupLon = group.longitude
         {
@@ -165,7 +168,6 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
             {
                 cell.distanceLabel.text = "On Location"
                 cell.distanceLabel.textColor = UIColor(red: 5/255.0 , green: 86/255.0 , blue: 9/255.0 , alpha: 1)
-                cell.playButton.enabled = true
             }
             else
             {

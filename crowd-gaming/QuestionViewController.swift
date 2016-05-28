@@ -197,38 +197,17 @@ class QuestionViewController: UIViewController ,CLLocationManagerDelegate{
                             self.answerButton4.enabled = false;
                             self.answerButton4.backgroundColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 0)
                         }
+                        self.statusLabel.text = String(format: "Time left: %.0fs", self.question!.timeToAnswer)
                         self.buttonIsConfirm = true;
                         self.actionButton.setTitle("Confirm", forState: .Normal)
                     })
                     
                     
-                case "603":
-                    print ("603")
-                    let alert = UIAlertController(title: "Error", message: "Questionnaire is offline!", preferredStyle: UIAlertControllerStyle.Alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                    self.presentViewController(alert, animated: true, completion: nil)
-                case "604":
-                    print ("604")
-                    let alert = UIAlertController(title: "Error", message: "You dont have access to this Questionnaire!", preferredStyle: UIAlertControllerStyle.Alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                    self.presentViewController(alert, animated: true, completion: nil)
-                case "606":
-                    print ("606")
-                    let alert = UIAlertController(title: "Error", message: "You didnt provide coordinates", preferredStyle: UIAlertControllerStyle.Alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                    self.presentViewController(alert, animated: true, completion: nil)
-                case "607":
-                    print ("607")
-                    let alert = UIAlertController(title: "Error", message: "Invalid location!", preferredStyle: UIAlertControllerStyle.Alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                    self.presentViewController(alert, animated: true, completion: nil)
-                case "608":
-                    print ("608")
-                    let alert = UIAlertController(title: "Error", message: "Question not found!", preferredStyle: UIAlertControllerStyle.Alert)
+                case "603" , "604" , "606" , "607" , "608":
+                    let alert = UIAlertController(title: "Error", message: json["message"] as? String, preferredStyle: UIAlertControllerStyle.Alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
                     self.presentViewController(alert, animated: true, completion: nil)
                 case "609":
-                    print ("609")
                     let alert = UIAlertController(title: "Question group completed!", message: "No more questions in this group!", preferredStyle: UIAlertControllerStyle.Alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
                     self.presentViewController(alert, animated: true, completion: nil)

@@ -209,6 +209,9 @@
                                         <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kio-Go-KtQ">
                                             <rect key="frame" x="59" y="81" width="39" height="30"/>
                                             <state key="normal" title="Reset"/>
+                                            <connections>
+                                                <action selector="OnReset:" destination="sfw-7r-VZA" eventType="touchUpInside" id="pXd-fC-YxP"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fcT-qd-A86">
                                             <rect key="frame" x="115" y="81" width="89" height="30"/>
@@ -439,7 +442,7 @@
                                     <segue destination="hed-zD-iN9" kind="push" id="TDz-QH-iA4"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ata-1e-MeX">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ata-1e-MeX">
                                 <rect key="frame" x="20" y="143" width="560" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -451,6 +454,10 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WfF-G1-bYP">
+                                <rect key="frame" x="20" y="178" width="560" height="300"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -459,13 +466,16 @@
                             <constraint firstItem="IPG-61-flr" firstAttribute="top" secondItem="KLw-fy-NqK" secondAttribute="bottom" constant="15" id="I4l-KZ-RCY"/>
                             <constraint firstItem="63b-gD-aMt" firstAttribute="leading" secondItem="nBo-U2-GwY" secondAttribute="leadingMargin" id="QXc-65-aNF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ata-1e-MeX" secondAttribute="trailing" id="RDg-E2-CXv"/>
+                            <constraint firstItem="WfF-G1-bYP" firstAttribute="top" secondItem="63b-gD-aMt" secondAttribute="bottom" constant="138" id="VAC-95-nFM"/>
                             <constraint firstAttribute="trailingMargin" secondItem="TSo-Sl-BK9" secondAttribute="trailing" constant="10" id="Wxj-UW-6rB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="63b-gD-aMt" secondAttribute="trailing" id="aJM-4K-nW2"/>
                             <constraint firstItem="IPG-61-flr" firstAttribute="leading" secondItem="nBo-U2-GwY" secondAttribute="leadingMargin" constant="5" id="bsm-xe-NBp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="WfF-G1-bYP" secondAttribute="trailing" id="iWN-G2-xsE"/>
                             <constraint firstItem="ata-1e-MeX" firstAttribute="top" secondItem="IPG-61-flr" secondAttribute="bottom" constant="26" id="low-db-noq"/>
                             <constraint firstItem="ata-1e-MeX" firstAttribute="leading" secondItem="nBo-U2-GwY" secondAttribute="leadingMargin" id="owp-Y3-4e9"/>
                             <constraint firstItem="63b-gD-aMt" firstAttribute="top" secondItem="nBo-U2-GwY" secondAttribute="topMargin" constant="10" id="rMv-f8-Var"/>
                             <constraint firstItem="TSo-Sl-BK9" firstAttribute="top" secondItem="nBo-U2-GwY" secondAttribute="topMargin" constant="59" id="rqp-M0-jxq"/>
+                            <constraint firstItem="WfF-G1-bYP" firstAttribute="leading" secondItem="nBo-U2-GwY" secondAttribute="leadingMargin" id="w6M-R5-5R7"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
@@ -477,6 +487,7 @@
                         <outlet property="progressLabel" destination="TSo-Sl-BK9" id="Ntf-E4-2Sb"/>
                         <outlet property="questionnaireNameLabel" destination="63b-gD-aMt" id="Mg4-V8-r6J"/>
                         <outlet property="statusLabel" destination="KLw-fy-NqK" id="6lT-8S-6jM"/>
+                        <outlet property="webView" destination="WfF-G1-bYP" id="sfQ-dj-OI5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fOl-Q9-yJo" userLabel="First Responder" sceneMemberID="firstResponder"/>

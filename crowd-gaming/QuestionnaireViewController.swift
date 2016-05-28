@@ -18,6 +18,8 @@ class QuestionnaireViewController: UIViewController {
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var progressLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var webView: UIWebView!
+    
     
     func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int, Int, Int) {
         return ( (seconds/3600)/24 , seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
@@ -28,7 +30,8 @@ class QuestionnaireViewController: UIViewController {
         
         questionnaireNameLabel.text = questionnaire.name
         progressLabel.text = "Progress: \(questionnaire.answeredQuestions)/\(questionnaire.totalQuestions)"
-        descriptionLabel.text = questionnaire.description
+        //descriptionLabel.text = questionnaire.description
+        webView.loadHTMLString(questionnaire.description, baseURL: nil)
         
         if questionnaire.timeLeftToStart == 0
         {
