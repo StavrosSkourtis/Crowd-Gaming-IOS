@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import CoreLocation
 
-class GroupTableViewController: UITableViewController {
+class GroupTableViewController: UITableViewController,CLLocationManagerDelegate {
     
     
     // MARK: Properties
@@ -16,10 +17,28 @@ class GroupTableViewController: UITableViewController {
     var groups = [QuestionGroup]()
     var questionnaireId : Int = 1
     
+    var userLatitude: Double?
+    var userLongitude: Double?
+    var locationManager: CLLocationManager!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        locationManager = CLLocationManager()
+        locationManager.delegate = self;
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        locationManager.startUpdatingLocation()
+        
         loadGroups();
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
+        
+        userLatitude = locValue.latitude
+        userLongitude = locValue.longitude
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
     }
     
     func loadGroups()
@@ -88,7 +107,7 @@ class GroupTableViewController: UITableViewController {
                     
                     
                     
-                    let questionGroup = QuestionGroup(id: id, name: name, latitude: latitude, longitude: longitude, radius: radius, creationDate: creationDate, answeredQuestions: answeredQuestions, currentQuestion: totalQuestions , allowedRepeats: allowedRepeats , currentRepeats: currentRepeats)
+                    let questionGroup = QuestionGroup(id: id, name: name, latitude: latitude, longitude: longitude, radius: radius, creationDate: creationDate, answeredQuestions: answeredQuestions, currentQuestion: totalQuestions , allowedRepeats: allowedRepeats , currentRepeats: currentRepeats , questionnaireId: self.questionnaireId)
                     
                     // let questionGroup = QuestionGroup(id: 12, name: "Question group new-name", latitude: 12, longitude: 12, radius: 21, creationDate: "12", answeredQuestions: 1, currentQuestion: 32, allowedRepeats: 4, currentRepeats: 2)
                     
@@ -133,7 +152,30 @@ class GroupTableViewController: UITableViewController {
         let group = groups[indexPath.row]
         
         cell.questionGroupName.text = group.name
-        cell.progressLabel.text = "Questions: \(group.answeredQuestions)/\(group.totalQuestions)   Iterations :\(group.currentRepeats)/\(group.allowedRepeats)"
+        cell.progressLabel.text = "Questions: \(group.answeredQuestions)/\(group.totalQuestions)"
+        cell.repeatLabel.text = "Repeats:\(group.currentRepeats)/\(group.allowedRepeats)"
+        
+        if let lat = userLatitude , let lon = userLongitude , let groupLat = group.latitude , let groupLon = group.longitude
+        {
+            let distance = ApiDriver.getDistance(lat, lon1: lon, lat2: groupLat, lon2: groupLon)
+            
+            if distance * 1000 <= group.radius!
+            {
+                cell.distanceLabel.text = "On Location"
+                cell.distanceLabel.textColor = UIColor(red: 5/255.0 , green: 86/255.0 , blue: 9/255.0 , alpha: 1)
+            }
+            else
+            {
+                cell.distanceLabel.text = "\(String(format: "%.2f", distance-group.radius!))km away"
+            }
+            
+        }
+        else
+        {
+            cell.distanceLabel.text = ""
+        }
+        
+        
         
         if group.answeredQuestions == group.totalQuestions
         {
@@ -204,15 +246,34 @@ class GroupTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         
-        let mapViewController = segue.destinationViewController as! MapViewController
-
-        if let selectedGroupCell = sender as? GroupTableViewCell
+        if segue.identifier == "goToMapViewSegue"
         {
-            let index = tableView.indexPathForCell(selectedGroupCell)!
-            let selectedGroup = groups[index.row]
+        
+            let mapViewController = segue.destinationViewController as! MapViewController
+
+            if let selectedGroupCell = sender as? GroupTableViewCell
+            {
+                let index = tableView.indexPathForCell(selectedGroupCell)!
+                let selectedGroup = groups[index.row]
             
-            mapViewController.group = selectedGroup
+                mapViewController.group = selectedGroup
+                mapViewController.userLat = userLatitude
+                mapViewController.userLon = userLongitude
+            }
         }
+        else if segue.identifier == "playSegue"
+        {
+            let questionViewController = segue.destinationViewController as! QuestionViewController
+            
+            if let selectedGroupCell = sender as? GroupTableViewCell
+            {
+                let index = tableView.indexPathForCell(selectedGroupCell)!
+                let selectedGroup = groups[index.row]
+                
+                questionViewController.group = selectedGroup
+            }
+        }
+        
 
         
     }

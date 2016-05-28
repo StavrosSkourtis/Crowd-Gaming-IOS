@@ -28,6 +28,7 @@
 		85E39F821CF216440022FFE7 /* QuestionnaireTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E39F811CF216440022FFE7 /* QuestionnaireTableViewController.swift */; };
 		85E39F841CF23D600022FFE7 /* QuestionnaireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E39F831CF23D600022FFE7 /* QuestionnaireViewController.swift */; };
 		85E8A6831CF616D60015BC00 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E8A6821CF616D60015BC00 /* MapViewController.swift */; };
+		85F82AE41CF74DD500F6BD8F /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F82AE31CF74DD500F6BD8F /* QuestionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		85E39F811CF216440022FFE7 /* QuestionnaireTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionnaireTableViewController.swift; sourceTree = "<group>"; };
 		85E39F831CF23D600022FFE7 /* QuestionnaireViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionnaireViewController.swift; sourceTree = "<group>"; };
 		85E8A6821CF616D60015BC00 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		85F82AE31CF74DD500F6BD8F /* QuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 				8553F9641CE88CCF006A871E /* ApiDriver.swift */,
 				85AD45DF1CD39FD0007B0B83 /* Config.swift */,
 				85AD45A91CD3880F007B0B83 /* Main.storyboard */,
+				85F82AE31CF74DD500F6BD8F /* QuestionViewController.swift */,
 				85E8A6821CF616D60015BC00 /* MapViewController.swift */,
 				85DB61121CF4B962009AAC18 /* GroupTableViewCell.swift */,
 				85DB61161CF4BD52009AAC18 /* GroupTableViewController.swift */,
@@ -314,6 +317,7 @@
 				85AD45DE1CD39E52007B0B83 /* Answer.swift in Sources */,
 				85AD45DC1CD39D94007B0B83 /* Question.swift in Sources */,
 				85AD45E01CD39FD0007B0B83 /* Config.swift in Sources */,
+				85F82AE41CF74DD500F6BD8F /* QuestionViewController.swift in Sources */,
 				85DB61131CF4B962009AAC18 /* GroupTableViewCell.swift in Sources */,
 				8553F9651CE88CCF006A871E /* ApiDriver.swift in Sources */,
 				85E39F801CF2101A0022FFE7 /* QuestionnaireTableViewCell.swift in Sources */,

@@ -12,6 +12,7 @@ class QuestionGroup{
     
     var id : Int
     var name: String
+    var questionnaireId: Int
     var latitude : Double?
     var longitude : Double?
     var radius : Double?
@@ -24,7 +25,7 @@ class QuestionGroup{
     var allowedRepeats : Int
     var currentRepeats : Int
     
-    init ( id qId : Int , name qName : String , latitude qLatitude : Double? , longitude qLongitude : Double? , radius qRadius : Double? , creationDate qCreationDate : String , answeredQuestions qAnsweredQuestions : Int , currentQuestion qCurrentQuestions : Int , allowedRepeats qAllowedRepeats : Int , currentRepeats qCurrentRepeats: Int){
+    init ( id qId : Int , name qName : String , latitude qLatitude : Double? , longitude qLongitude : Double? , radius qRadius : Double? , creationDate qCreationDate : String , answeredQuestions qAnsweredQuestions : Int , currentQuestion qCurrentQuestions : Int , allowedRepeats qAllowedRepeats : Int , currentRepeats qCurrentRepeats: Int , questionnaireId qQuestionnaireId : Int){
         id = qId
         name = qName
         latitude = qLatitude
@@ -35,5 +36,6 @@ class QuestionGroup{
         totalQuestions = qCurrentQuestions
         allowedRepeats = qAllowedRepeats
         currentRepeats = qCurrentRepeats
+        questionnaireId = qQuestionnaireId
     }
 }

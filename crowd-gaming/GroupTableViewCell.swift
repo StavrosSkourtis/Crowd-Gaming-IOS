@@ -14,13 +14,13 @@ class GroupTableViewCell: UITableViewCell {
     
     @IBOutlet weak var questionGroupName: UILabel!
     @IBOutlet weak var progressLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var repeatLabel: UILabel!
     @IBOutlet weak var viewOnMapButton: UIButton!
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
     
     var viewController : GroupTableViewController?
-    
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,7 +38,13 @@ class GroupTableViewCell: UITableViewCell {
     @IBAction func OnViewOnMap(sender: AnyObject) {
         
         viewController!.performSegueWithIdentifier("goToMapViewSegue", sender: self)
-        print("Clicked")
+        print("Map View")
+    }
+    
+    @IBAction func OnPlay(sender: AnyObject) {
+        
+        viewController!.performSegueWithIdentifier("playSegue", sender: self)
+        print("Play view")
     }
 
 }

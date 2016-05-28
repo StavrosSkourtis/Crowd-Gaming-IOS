@@ -15,6 +15,8 @@ class MapViewController: UIViewController , MKMapViewDelegate{
     
     @IBOutlet weak var mapView: MKMapView!
     var group : QuestionGroup!
+    var userLat : Double!
+    var userLon : Double!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +50,15 @@ class MapViewController: UIViewController , MKMapViewDelegate{
         objectAnnotation.title = group.name
         
         mapView.addAnnotation(objectAnnotation)
-        // Do any additional setup after loading the view.
+        
+        let userLocation : CLLocationCoordinate2D = CLLocationCoordinate2DMake(userLat, userLon)
+        
+        let userAnnotation = MKPointAnnotation()
+        
+        userAnnotation.coordinate = userLocation
+        userAnnotation.title = "Your location"
+        
+        mapView.addAnnotation(userAnnotation)
     }
 
     override func didReceiveMemoryWarning() {

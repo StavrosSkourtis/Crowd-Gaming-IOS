@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import Darwin
 
 class ApiDriver{
     
@@ -33,5 +33,17 @@ class ApiDriver{
         
     }
     
-    
+    static func getDistance(lat1: Double ,lon1: Double , lat2:Double ,lon2:Double ) -> Double{
+        let R = 6371.0; // Radius of the earth in km
+        let dLat = (lat2 - lat1) * ( M_PI / 180);
+        let dLon = (lon2 - lon1) * ( M_PI / 180);
+        
+        let a =  sin(dLat/2) * sin(dLat / 2) +
+            cos(lat1 * (M_PI / 180)) * cos(lat2 * (M_PI / 180)) *
+            sin(dLon / 2) * sin(dLon / 2);
+        
+        let c = 2 * atan2(sqrt(a), sqrt(1 - a));
+        let d = R * c; // Distance in km
+        return d;
+    }
 }
