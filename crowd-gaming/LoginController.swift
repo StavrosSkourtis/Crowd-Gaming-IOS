@@ -19,6 +19,22 @@ class LoginController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        if let email = defaults.stringForKey("email") , let password = defaults.stringForKey("password")
+        {
+            emailTextField.text = email;
+            passwordTextField.text = password;
+            onLogin(errorLabel)
+        }
+        else
+        {
+            emailTextField.text = ""
+            passwordTextField.text = ""
+            errorLabel.text = "Login"
+        }
+        
     }
 
     @IBAction func onLogin(sender: AnyObject) {
@@ -79,9 +95,14 @@ class LoginController: UIViewController {
                 if json["code"]! as! String == "200"
                 {
                     self.errorLabel.text = "Success! Welcome back \(user.name) \(user.surname)."
-                    self.errorLabel.textColor = UIColor.greenColor()
+                    self.errorLabel.textColor = UIColor( red: 0, green: 0.6, blue: 0, alpha: 1)
                     
                     ApiConfig.currentUser = user
+                    
+                    let defaults = NSUserDefaults.standardUserDefaults()
+                    
+                    defaults.setObject(user.email, forKey: "email")
+                    defaults.setObject(user.password, forKey: "password")
                     
                     self.performSegueWithIdentifier("SegueToQuestionnaireList", sender: self)
                 }

@@ -51,14 +51,16 @@ class MapViewController: UIViewController , MKMapViewDelegate{
         
         mapView.addAnnotation(objectAnnotation)
         
-        let userLocation : CLLocationCoordinate2D = CLLocationCoordinate2DMake(userLat, userLon)
-        
-        let userAnnotation = MKPointAnnotation()
-        
-        userAnnotation.coordinate = userLocation
-        userAnnotation.title = "Your location"
-        
-        mapView.addAnnotation(userAnnotation)
+        if let _ = userLat , let _ = userLon
+        {
+            let userLocation : CLLocationCoordinate2D = CLLocationCoordinate2DMake(userLat, userLon)
+            let userAnnotation = MKPointAnnotation()
+            
+            userAnnotation.coordinate = userLocation
+            userAnnotation.title = "Your location"
+            
+            mapView.addAnnotation(userAnnotation)
+        }
     }
 
     override func didReceiveMemoryWarning() {

@@ -74,7 +74,7 @@
                         <outlet property="emailTextField" destination="k4l-6B-SVc" id="AGX-6j-Qaj"/>
                         <outlet property="errorLabel" destination="a9g-kw-IXS" id="hWw-cW-zvu"/>
                         <outlet property="passwordTextField" destination="8XT-v0-KGZ" id="Va1-Br-dAm"/>
-                        <segue destination="er1-oK-R82" kind="show" identifier="SegueToQuestionnaireList" id="eSQ-RA-kUk"/>
+                        <segue destination="er1-oK-R82" kind="presentation" identifier="SegueToQuestionnaireList" id="eSQ-RA-kUk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -138,7 +138,13 @@
                         </connections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="My Questionnaires" id="fVq-IM-UJG"/>
+                    <navigationItem key="navigationItem" title="My Questionnaires" id="fVq-IM-UJG">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="I0d-82-Mjn">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="presentation" identifier="logoutSegue" id="s3R-eM-4Ji"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Pr-bU-EGc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

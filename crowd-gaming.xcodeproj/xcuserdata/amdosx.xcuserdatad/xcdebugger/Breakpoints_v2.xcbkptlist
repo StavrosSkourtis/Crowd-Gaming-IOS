@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "crowd-gaming/LoginController.swift"
-            timestampString = "485901516.7551"
+            timestampString = "486212072.559113"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "onLogin(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -72,11 +72,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "crowd-gaming/QuestionnaireTableViewController.swift"
-            timestampString = "486150268.345426"
+            timestampString = "486210445.371526"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
             landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>
@@ -88,11 +88,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "crowd-gaming/QuestionnaireTableViewController.swift"
-            timestampString = "486150411.693275"
+            timestampString = "486210445.371526"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "getQuestionnaires()"
             landmarkType = "5">
          </BreakpointContent>
@@ -245,11 +245,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GroupTableViewController.swift"
-            timestampString = "486152684.836512"
+            timestampString = "486211454.821423"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
             landmarkName = "loadGroups()"
             landmarkType = "5">
          </BreakpointContent>
@@ -309,11 +309,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GroupTableViewController.swift"
-            timestampString = "486152684.836512"
+            timestampString = "486211454.821423"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
             landmarkName = "loadGroups()"
             landmarkType = "5">
          </BreakpointContent>
@@ -341,11 +341,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GroupTableViewController.swift"
-            timestampString = "486152819.52602"
+            timestampString = "486211454.821423"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
             landmarkName = "tableView(_:cellForRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -357,11 +357,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GroupTableViewController.swift"
-            timestampString = "486152819.52602"
+            timestampString = "486211454.821423"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "260"
-            endingLineNumber = "260"
+            startingLineNumber = "275"
+            endingLineNumber = "275"
             landmarkName = "prepareForSegue(_:sender:)"
             landmarkType = "5">
          </BreakpointContent>

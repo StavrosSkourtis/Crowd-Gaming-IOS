@@ -13,11 +13,16 @@ class QuestionnaireTableViewController: UITableViewController {
     // MARK: Properties
     
     var questionnaires = [Questionnaire]()
+    var timerGuard = true;
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let _ = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "onTimer", userInfo: nil, repeats: true)
+        if timerGuard
+        {
+            let _ = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "onTimer", userInfo: nil, repeats: true)
+            timerGuard = false;
+        }
         
         getQuestionnaires()
     }
@@ -150,7 +155,7 @@ class QuestionnaireTableViewController: UITableViewController {
             cell.statusLabel.text = "Offline"
             cell.statusLabel.textColor = UIColor(red: 179/255.0 , green: 9/255.0 , blue: 9/255.0 , alpha: 1)
         }
-        print("Loaded")
+        //print("Loaded")
 
 
         return cell
@@ -159,28 +164,25 @@ class QuestionnaireTableViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        ///*
-        let questionnaireViewController = segue.destinationViewController as! QuestionnaireViewController
-        
-        if let selectedQuestionnaireCell = sender as? QuestionnaireTableViewCell
+        if segue.identifier == "logoutSegue"
         {
-            let index = tableView.indexPathForCell(selectedQuestionnaireCell)!
-            let selectedQuestionnaire = questionnaires[index.row]
-            
-            questionnaireViewController.questionnaire = selectedQuestionnaire
+            print("Logout")
+            let defaults = NSUserDefaults.standardUserDefaults();
+            defaults.removeObjectForKey("email")
+            defaults.removeObjectForKey("password")
         }
-
-        /*
-        let questionnaireViewController = segue.destinationViewController as! GroupTableViewController
-        
-        if let selectedQuestionnaireCell = sender as? QuestionnaireTableViewCell
+        else
         {
-            let index = tableView.indexPathForCell(selectedQuestionnaireCell)!
-            let selectedQuestionnaire = questionnaires[index.row]
+            let questionnaireViewController = segue.destinationViewController as! QuestionnaireViewController
             
-            questionnaireViewController.questionnaireId = selectedQuestionnaire.id
+            if let selectedQuestionnaireCell = sender as? QuestionnaireTableViewCell
+            {
+                let index = tableView.indexPathForCell(selectedQuestionnaireCell)!
+                let selectedQuestionnaire = questionnaires[index.row]
+                
+                questionnaireViewController.questionnaire = selectedQuestionnaire
+            }
         }
-        */
         
     }
     

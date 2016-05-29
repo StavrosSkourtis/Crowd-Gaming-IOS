@@ -56,15 +56,6 @@ class QuestionnaireViewController: UIViewController {
     
     func onTimer(){
         
-        if questionnaire.timeLeftToStart > 0
-        {
-            questionnaire.timeLeftToStart--;
-        }
-        else if questionnaire.timeLeftToEnd > 0
-        {
-            questionnaire.timeLeftToEnd--;
-        }
-        
         if questionnaire.timeLeftToStart == 0
         {
             let (d,h,m,s) = secondsToHoursMinutesSeconds(questionnaire.timeLeftToEnd)

@@ -21,17 +21,20 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
     var userLongitude: Double?
     var locationManager: CLLocationManager!
     
+    var timerGuard = true;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        locationManager = CLLocationManager()
-        locationManager.delegate = self;
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
-        locationManager.startUpdatingLocation()
         
-        let _ = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: "onTimer", userInfo: nil, repeats: true)
-        
+        if timerGuard {
+            locationManager = CLLocationManager()
+            locationManager.delegate = self;
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.requestAlwaysAuthorization()
+            locationManager.startUpdatingLocation()
+            let _ = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: "onTimer", userInfo: nil, repeats: true)
+            timerGuard = false;
+        }
         loadGroups();
     }
     
@@ -172,6 +175,7 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
             else
             {
                 cell.distanceLabel.text = "\(String(format: "%.2f", distance-group.radius!))km away"
+                cell.distanceLabel.textColor = UIColor(red: 0 , green: 0 , blue: 0 , alpha: 1)
                 cell.playButton.enabled = false
             }
             
@@ -197,6 +201,17 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
             let _=group.longitude,
             let _=group.radius
         {
+            if let _ = userLatitude , let _ = userLongitude
+            {
+                
+            }
+            else
+            {
+                cell.distanceLabel.text = "GPS is off"
+                cell.distanceLabel.textColor = UIColor(red: 1 , green: 0 , blue: 0 , alpha: 1)
+                cell.playButton.enabled = false
+            }
+            
             cell.viewOnMapButton.enabled = true
         }
         else

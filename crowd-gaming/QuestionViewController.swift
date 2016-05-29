@@ -293,6 +293,7 @@ class QuestionViewController: UIViewController ,CLLocationManagerDelegate{
             
             let json = ApiDriver.parseJson(responseString!);
             
+            print(responseString)
             dispatch_sync(dispatch_get_main_queue(),
             {
                 if let code = json["code"] as? String
@@ -302,7 +303,7 @@ class QuestionViewController: UIViewController ,CLLocationManagerDelegate{
                     case "200":
                         print ("200")
                         if self.answerChoise == 0 {
-                            self.statusLabel.text = "Timer run out"
+                            self.statusLabel.text = "Time run out!"
                         }else{
                             self.statusLabel.text = "Answer was posted."
                         }
@@ -323,6 +324,12 @@ class QuestionViewController: UIViewController ,CLLocationManagerDelegate{
                 {
                     print("Code is nil")
                 }
+                
+                self.answerButton1.backgroundColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
+                self.answerButton2.backgroundColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
+                self.answerButton3.backgroundColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
+                self.answerButton4.backgroundColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
+
             })
 
         }
@@ -351,6 +358,12 @@ class QuestionViewController: UIViewController ,CLLocationManagerDelegate{
     }
     
     @IBAction func OnAnswer1(sender: AnyObject) {
+        
+        if !buttonIsConfirm
+        {
+            return;
+        }
+        
         answerChoise = 1;
         
         answerButton1.backgroundColor = UIColor(red: 204/255.0, green: 235/255.0, blue: 1, alpha: 1)
@@ -366,6 +379,12 @@ class QuestionViewController: UIViewController ,CLLocationManagerDelegate{
     }
     
     @IBAction func OnAnswer2(sender: AnyObject) {
+        
+        if !buttonIsConfirm
+        {
+            return;
+        }
+        
         answerChoise = 2
         
         answerButton2.backgroundColor = UIColor(red: 204/255.0, green: 235/255.0, blue: 1, alpha: 1)
@@ -381,6 +400,12 @@ class QuestionViewController: UIViewController ,CLLocationManagerDelegate{
     }
     
     @IBAction func OnAnswer3(sender: AnyObject) {
+        
+        if !buttonIsConfirm
+        {
+            return;
+        }
+        
         if answers.count >= 3
         {
             answerChoise = 3;
@@ -395,6 +420,11 @@ class QuestionViewController: UIViewController ,CLLocationManagerDelegate{
     }
     
     @IBAction func OnAction4(sender: AnyObject) {
+        if !buttonIsConfirm
+        {
+            return;
+        }
+        
         if answers.count == 4
         {
             answerChoise = 4
