@@ -43,6 +43,13 @@ class QuestionViewController: UIViewController ,CLLocationManagerDelegate{
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
         
+        
+        answerButton1.layer.cornerRadius = 12
+        answerButton2.layer.cornerRadius = 12
+        answerButton3.layer.cornerRadius = 12
+        answerButton4.layer.cornerRadius = 12
+        
+        
         let _ = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "onTimer", userInfo: nil, repeats: true)
         
         loadNextQuestion()
@@ -118,57 +125,58 @@ class QuestionViewController: UIViewController ,CLLocationManagerDelegate{
             if let code = json["code"] as? String
             {
                 
-                
-                switch code{
+                dispatch_sync(dispatch_get_main_queue(),
+                {
+                    switch code{
                     
-                case "200":
-                    print ("Loading Question")
-                    /*
-                    Load Question
-                    */
+                    case "200":
+                        print ("Loading Question")
+                        /*
+                            Load Question
+                        */
                     
-                    if let questionJson = json["question"] as? NSDictionary
-                    {
-                        let id = questionJson["id"] as! Int
-                        let questionText = questionJson["question-text"] as! String
-                        let multiplier = questionJson["multiplier"] as! Double
-                        let creationDate = questionJson["creation_date"] as! String
-                        let timeToAnswer = questionJson["time-to-answer"] as! Double
-                        
-                        let question = Question(id: id, questionText: questionText, multiplier: multiplier, creationDate: creationDate, timeToAnswer: timeToAnswer)
-                        
-                        dispatch_sync(dispatch_get_main_queue(), {
-                            self.question = question
-                        })
-                        
-                    }
-                    
-                    print ("Loading Answers")
-                    /*
-                    Load Answers
-                    */
-                    if let answerJson = json["answer"] as? NSArray{
-                        print("In Here")
-                        for item in answerJson
+                        if let questionJson = json["question"] as? NSDictionary
                         {
-                            let answerInfo = item as! NSDictionary
-                            
-                            let id : Int = answerInfo["id"] as! Int
-                            let answerText : String = answerInfo["answer-text"] as! String
-                            let creationDate: String = answerInfo["creation_date"] as! String
-                            
-                            let answer = Answer(id: id, answerText: answerText, creationDate: creationDate)
-                            
-                            print("Questionnaire \(id)")
-                            
-                            dispatch_sync(dispatch_get_main_queue(),
-                                {
-                                    self.answers.append(answer)
-                            })
+                            let id = questionJson["id"] as! Int
+                            let questionText = questionJson["question-text"] as! String
+                            let multiplier = questionJson["multiplier"] as! Double
+                            let creationDate = questionJson["creation_date"] as! String
+                            let timeToAnswer = questionJson["time-to-answer"] as! Double
+                        
+                            let question = Question(id: id, questionText: questionText, multiplier: multiplier, creationDate: creationDate, timeToAnswer: timeToAnswer)
+                        
+                       
+                            self.question = question
+                        
+                        
                         }
-                    }
                     
-                    dispatch_sync(dispatch_get_main_queue() , {
+                        print ("Loading Answers")
+                        /*
+                            Load Answers
+                        */
+                        if let answerJson = json["answer"] as? NSArray{
+                            print("In Here")
+                            for item in answerJson
+                            {
+                                let answerInfo = item as! NSDictionary
+                                
+                                let id : Int = answerInfo["id"] as! Int
+                                let answerText : String = answerInfo["answer-text"] as! String
+                                let creationDate: String = answerInfo["creation_date"] as! String
+                            
+                                let answer = Answer(id: id, answerText: answerText, creationDate: creationDate)
+                            
+                                print("Questionnaire \(id)")
+                            
+                               // dispatch_sync(dispatch_get_main_queue(),
+                                
+                                    self.answers.append(answer)
+                               //})
+                            }
+                        }
+                    
+                    //dispatch_sync(dispatch_get_main_queue() , {
                         self.titleLabel.text = "\(self.group!.name) \(self.group!.answeredQuestions+1)/\(self.group!.totalQuestions)"
                         self.questionLabel.text = self.question!.questionText
                         
@@ -200,29 +208,30 @@ class QuestionViewController: UIViewController ,CLLocationManagerDelegate{
                         self.statusLabel.text = String(format: "Time left: %.0fs", self.question!.timeToAnswer)
                         self.buttonIsConfirm = true;
                         self.actionButton.setTitle("Confirm", forState: .Normal)
-                    })
+                   // })
                     
                     
-                case "603" , "604" , "606" , "607" , "608":
-                    let alert = UIAlertController(title: "Error", message: json["message"] as? String, preferredStyle: UIAlertControllerStyle.Alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                    self.presentViewController(alert, animated: true, completion: nil)
-                case "609":
-                    let alert = UIAlertController(title: "Question group completed!", message: "No more questions in this group!", preferredStyle: UIAlertControllerStyle.Alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                    self.presentViewController(alert, animated: true, completion: nil)
+                    case "603" , "604" , "606" , "607" , "608":
+                        let alert = UIAlertController(title: "Error", message: json["message"] as? String, preferredStyle: UIAlertControllerStyle.Alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                        self.presentViewController(alert, animated: true, completion: nil)
+                    case "609":
+                        let alert = UIAlertController(title: "Question group completed!", message: "No more questions in this group!", preferredStyle: UIAlertControllerStyle.Alert)
                     
-                    dispatch_sync(dispatch_get_main_queue(),
-                    {
-                        self.navigationController!.popViewControllerAnimated(true)
-                    })
+                    
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {(action: UIAlertAction!) in
+                            print("Back to group list")
+                            self.navigationController?.popViewControllerAnimated(true)
+                        }))
+                    
+                        self.presentViewController(alert, animated: true, completion: nil)
+                    
 
-                default:
-                    print ("No code mate")
-                    break
-                }
-                
-                
+                    default:
+                        print ("No code mate")
+                        break
+                    }
+                })
             }
             else
             {
