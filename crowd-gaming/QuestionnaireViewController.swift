@@ -22,7 +22,7 @@ class QuestionnaireViewController: UIViewController {
     
     
     func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int, Int, Int) {
-        return ( (seconds/3600)/24 , seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
+        return ( (seconds/3600)/24 , seconds / 3600 % 24, (seconds % 3600) / 60, (seconds % 3600) % 60)
     }
     
     override func viewDidLoad() {

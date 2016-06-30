@@ -88,11 +88,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "crowd-gaming/QuestionnaireTableViewController.swift"
-            timestampString = "486210445.371526"
+            timestampString = "489007201.920403"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
             landmarkName = "getQuestionnaires()"
             landmarkType = "5">
          </BreakpointContent>
@@ -245,11 +245,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GroupTableViewController.swift"
-            timestampString = "486211454.821423"
+            timestampString = "489004839.765091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
             landmarkName = "loadGroups()"
             landmarkType = "5">
          </BreakpointContent>
@@ -309,11 +309,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GroupTableViewController.swift"
-            timestampString = "486211454.821423"
+            timestampString = "489004839.765091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
             landmarkName = "loadGroups()"
             landmarkType = "5">
          </BreakpointContent>
@@ -341,11 +341,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GroupTableViewController.swift"
-            timestampString = "486211454.821423"
+            timestampString = "489006500.467137"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
             landmarkName = "tableView(_:cellForRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -357,11 +357,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GroupTableViewController.swift"
-            timestampString = "486211454.821423"
+            timestampString = "489006500.467137"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "275"
-            endingLineNumber = "275"
+            startingLineNumber = "306"
+            endingLineNumber = "306"
             landmarkName = "prepareForSegue(_:sender:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -443,6 +443,22 @@
             startingLineNumber = "234"
             endingLineNumber = "234"
             landmarkName = "loadNextQuestion()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "crowd-gaming/Quastionnaire.swift"
+            timestampString = "488636870.946239"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "init(id:name:description:creationDate:answeredQuestions:totalQuestions:timeLeftToStart:timeLeftToEnd:allowMultipleGroups:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

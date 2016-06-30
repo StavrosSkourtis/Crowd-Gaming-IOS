@@ -30,7 +30,7 @@ class QuestionnaireTableViewController: UITableViewController {
     func onTimer(){
         
         for questionnaire in questionnaires {
-            
+                
             if questionnaire.timeLeftToStart > 0
             {
                 questionnaire.timeLeftToStart--;
@@ -77,16 +77,29 @@ class QuestionnaireTableViewController: UITableViewController {
                 {
                     let questionnaireInfo = item as! NSDictionary
                     
+                    
+                    let date = NSDate()
+                    let calendar = NSCalendar.currentCalendar()
+                    let components = calendar.components( .Second , fromDate: date)
+                    
                     let id : Int = questionnaireInfo["id"] as! Int
                     let name : String = questionnaireInfo["name"] as! String
                     let description: String = questionnaireInfo["description"] as! String
                     let creationDate: String = questionnaireInfo["creation-date"] as! String
-                    let timeLeft: Int = questionnaireInfo["time-left"] as! Int
-                    let timeLeftToEnd: Int = questionnaireInfo["time-left-to-end"] as! Int
+                    var timeLeft: Int = questionnaireInfo["time-left"] as! Int
+                    var timeLeftToEnd: Int = questionnaireInfo["time-left-to-end"] as! Int
                     let totalQuestions: Int = questionnaireInfo["total-questions"] as! Int
                     let answeredQuestions: Int = questionnaireInfo["answered-questions"] as! Int
+                    let multiplePlaythroughs : Int = questionnaireInfo["allow-multiple-groups-playthrough"] as! Int
                     
-                    let questionnaire = Questionnaire(id: id, name: name, description: description,creationDate: creationDate , answeredQuestions:  answeredQuestions,totalQuestion: totalQuestions , timeLeftToStart: timeLeft , timeLeftToEnd:  timeLeftToEnd)
+                    if timeLeft != 0
+                    {
+                        timeLeft = timeLeft * 60 - components.second
+                    }
+                    
+                    timeLeftToEnd = timeLeftToEnd * 60 - components.second
+                    
+                    let questionnaire = Questionnaire(id: id, name: name, description: description, creationDate: creationDate, answeredQuestions: answeredQuestions, totalQuestions: totalQuestions, timeLeftToStart: timeLeft, timeLeftToEnd: timeLeftToEnd, allowMultipleGroups: multiplePlaythroughs==1 ? true : false)
                     
                     print("Questionnaire \(id)")
                     
@@ -125,7 +138,7 @@ class QuestionnaireTableViewController: UITableViewController {
     }
 
     func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int, Int, Int) {
-        return ( (seconds/3600)/24 , seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
+        return ( (seconds/3600)/24 , seconds / 3600 % 24, (seconds % 3600) / 60, (seconds % 3600) % 60)
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -138,7 +151,7 @@ class QuestionnaireTableViewController: UITableViewController {
         
         cell.nameLabel.text = questionnaire.name
         cell.progressLabel.text = "Progress: \(questionnaire.answeredQuestions)/\(questionnaire.totalQuestions)"
-        
+
         if questionnaire.timeLeftToStart == 0
         {
             let (d,h,m,s) = secondsToHoursMinutesSeconds(questionnaire.timeLeftToEnd)

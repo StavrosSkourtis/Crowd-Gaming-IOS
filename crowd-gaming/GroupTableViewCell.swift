@@ -19,6 +19,7 @@ class GroupTableViewCell: UITableViewCell {
     @IBOutlet weak var viewOnMapButton: UIButton!
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var priorityLabel: UILabel!
     
     var viewController : GroupTableViewController?
     var group : QuestionGroup!

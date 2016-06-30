@@ -89,7 +89,24 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
                     let answeredQuestions: Int = groupInfo["answered-questions"] as! Int
                     let allowedRepeats: Int = groupInfo["allowed-repeats"] as! Int
                     let currentRepeats: Int = groupInfo["current-repeats"] as! Int
-                   
+                    let priority : Int = groupInfo["priority"] as! Int
+                    
+                    var isCompleted : Int = 0;
+                    
+                    if let _ = groupInfo["is-completed"] as? Int
+                    {
+                        isCompleted = groupInfo["is-completed"] as! Int
+                    }
+                    
+                    let timeToComplete : Int = groupInfo["time-to-complete"] as! Int
+                    
+                    var timeLeft : Int? = nil
+                    
+                    if let time = groupInfo["time-left"]
+                    {
+                        timeLeft = time as? Int
+                    }
+                
                     var latitude: Double? = nil
                     if let lat = groupInfo["latitude"]
                     {
@@ -111,7 +128,7 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
                     print("Question Group \(id)")
                     
                     
-                    let questionGroup = QuestionGroup(id: id, name: name, latitude: latitude, longitude: longitude, radius: radius, creationDate: creationDate, answeredQuestions: answeredQuestions, currentQuestion: totalQuestions , allowedRepeats: allowedRepeats , currentRepeats: currentRepeats , questionnaireId: self.questionnaire.id)
+                    let questionGroup = QuestionGroup(id: id, name: name, latitude: latitude, longitude: longitude, radius: radius, creationDate: creationDate, answeredQuestions: answeredQuestions, currentQuestion: totalQuestions, allowedRepeats: allowedRepeats, currentRepeats: currentRepeats, questionnaireId: self.questionnaire!.id, priority: priority, isCompleted: isCompleted==1 ? true : false, timeToComplete: timeToComplete, timeLeft: timeLeft)
                     
                     // let questionGroup = QuestionGroup(id: 12, name: "Question group new-name", latitude: 12, longitude: 12, radius: 21, creationDate: "12", answeredQuestions: 1, currentQuestion: 32, allowedRepeats: 4, currentRepeats: 2)
                     
@@ -157,15 +174,31 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
         
         cell.questionGroupName.text = group.name
         cell.progressLabel.text = "Questions: \(group.answeredQuestions)/\(group.totalQuestions)"
-        cell.repeatLabel.text = "Repeats:\(group.currentRepeats)/\(group.allowedRepeats)"
+        cell.repeatLabel.text = ""
         cell.group = group;
         cell.playButton.enabled = true;
         cell.resetButton.enabled = true;
         cell.viewOnMapButton.enabled = true;
         
+        cell.priorityLabel.text = "Order \(group.priority)  Repeats:\(group.currentRepeats)/\(group.allowedRepeats)"
+        
+        if let _ = group.timeLeft
+        {
+            cell.priorityLabel.text = "Time Left: "
+        }
+        else if group.timeToComplete == -1
+        {
+            cell.priorityLabel.text = ""
+        }
+        else
+        {
+            cell.priorityLabel.text = "Available time \(group.timeToComplete)"
+        }
+        
         if let lat = userLatitude , let lon = userLongitude , let groupLat = group.latitude , let groupLon = group.longitude
         {
-            let distance = ApiDriver.getDistance(lat, lon1: lon, lat2: groupLat, lon2: groupLon)
+            let distance = abs(ApiDriver.getDistance(lat, lon1: lon, lat2: groupLat, lon2: groupLon))
+            
             
             if distance * 1000 <= group.radius!
             {
@@ -174,7 +207,7 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
             }
             else
             {
-                cell.distanceLabel.text = "\(String(format: "%.2f", distance-group.radius!))km away"
+                cell.distanceLabel.text = "\(String(format: "%.2f", abs(distance - (group.radius!/1000))))km away"
                 cell.distanceLabel.textColor = UIColor(red: 0 , green: 0 , blue: 0 , alpha: 1)
                 cell.playButton.enabled = false
             }
@@ -184,8 +217,6 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
         {
             cell.distanceLabel.text = ""
         }
-        
-        
         
         if group.answeredQuestions == group.totalQuestions
         {

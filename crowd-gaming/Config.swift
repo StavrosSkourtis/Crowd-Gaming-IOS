@@ -9,6 +9,6 @@
 import Foundation
 
 struct ApiConfig {
-    static let apiUrl = "http://crowd-gaming.skourtis.me/rest_api/"
+    static let apiUrl = "https://crowd-gaming.skourtis.me/rest_api/"
     static var currentUser : User?
 }
