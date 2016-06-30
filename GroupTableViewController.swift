@@ -39,6 +39,16 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
     }
     
     func onTimer(){
+        
+        for group in groups {
+            
+            if let _ = group.timeLeft
+            {
+                group.timeLeft! -= 1
+            }
+
+        }
+        
         tableView.reloadData();
     }
     
@@ -165,6 +175,18 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
         return groups.count
     }
 
+    func groupTimeLeft (seconds : Int) -> (Int, String) {
+        if seconds < 60
+        {
+            return (seconds , "s" )
+        }
+        else if seconds < 3600
+        {
+            return (seconds / 60 , "m")
+        }
+        return (seconds / 3600 , "h")
+        
+    }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let callIdentifier = "GroupTableViewCell"
@@ -173,7 +195,17 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
         let group = groups[indexPath.row]
         
         cell.questionGroupName.text = group.name
-        cell.progressLabel.text = "Questions: \(group.answeredQuestions)/\(group.totalQuestions)"
+        
+        if group.isCompleted
+        {
+            cell.progressLabel.text = "Completed Questions: \(group.answeredQuestions)/\(group.totalQuestions)"
+            cell.progressLabel.textColor = UIColor(red: 5/255.0 , green: 86/255.0 , blue: 9/255.0 , alpha: 1)
+        }
+        else
+        {
+            cell.progressLabel.text = "Questions: \(group.answeredQuestions)/\(group.totalQuestions)"
+        }
+        
         cell.repeatLabel.text = ""
         cell.group = group;
         cell.playButton.enabled = true;
@@ -182,17 +214,19 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
         
         cell.priorityLabel.text = "Order \(group.priority)  Repeats:\(group.currentRepeats)/\(group.allowedRepeats)"
         
-        if let _ = group.timeLeft
+        if group.timeToComplete == -1 || group.isCompleted
         {
-            cell.priorityLabel.text = "Time Left: "
+            cell.timeLeft.text = ""
         }
-        else if group.timeToComplete == -1
+        else if let _ = group.timeLeft
         {
-            cell.priorityLabel.text = ""
+            let ( value , type) = groupTimeLeft(group.timeLeft!)
+            cell.timeLeft.text = "Time Left \(value)\(type)"
         }
         else
         {
-            cell.priorityLabel.text = "Available time \(group.timeToComplete)"
+            let ( value , type) = groupTimeLeft(group.timeToComplete)
+            cell.timeLeft.text = "Available time \(value)\(type)"
         }
         
         if let lat = userLatitude , let lon = userLongitude , let groupLat = group.latitude , let groupLon = group.longitude
@@ -228,6 +262,11 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
             cell.playButton.enabled = false
         }
         
+        if group.isCompleted
+        {
+            cell.playButton.enabled = false
+        }
+        
         if  let _=group.latitude,
             let _=group.longitude,
             let _=group.radius
@@ -250,7 +289,7 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
             cell.viewOnMapButton.enabled = false
         }
         
-        if group.currentRepeats == group.allowedRepeats
+        if group.currentRepeats == group.allowedRepeats || group.isCompleted
         {
             cell.resetButton.enabled = false
         }

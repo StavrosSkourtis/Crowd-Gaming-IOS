@@ -130,6 +130,8 @@ class QuestionViewController: UIViewController ,CLLocationManagerDelegate{
                     switch code{
                     
                     case "200":
+                        
+                        self.group?.timeLeft = self.group!.timeToComplete
                         print ("Loading Question")
                         /*
                             Load Question
@@ -309,7 +311,7 @@ class QuestionViewController: UIViewController ,CLLocationManagerDelegate{
                 {
                     switch code{
                     
-                    case "200":
+                    case "200","201":
                         print ("200")
                         if self.answerChoise == 0 {
                             self.statusLabel.text = "Time run out!"
@@ -317,6 +319,12 @@ class QuestionViewController: UIViewController ,CLLocationManagerDelegate{
                             self.statusLabel.text = "Answer was posted."
                         }
                         self.group?.answeredQuestions += 1
+                        
+                        if code == "201"
+                        {
+                            self.group?.isCompleted = true
+                        }
+                        
                     case "603" , "605" , "606" , "607" , "500" , "610":
                         let alert = UIAlertController(title: "Error", message: json["message"] as! String, preferredStyle: UIAlertControllerStyle.Alert)
                         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
@@ -334,11 +342,25 @@ class QuestionViewController: UIViewController ,CLLocationManagerDelegate{
                     print("Code is nil")
                 }
                 
-                self.answerButton1.backgroundColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
-                self.answerButton2.backgroundColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
-                self.answerButton3.backgroundColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
-                self.answerButton4.backgroundColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
-
+                if answerChoice != 1
+                {
+                    self.answerButton1.backgroundColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
+                }
+                
+                if answerChoice != 2
+                {
+                    self.answerButton2.backgroundColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
+                }
+                
+                if self.answers.count >= 3 && answerChoice != 3
+                {
+                    self.answerButton3.backgroundColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
+                }
+                
+                if self.answers.count == 4 && answerChoice != 4
+                {
+                    self.answerButton4.backgroundColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
+                }
             })
 
         }
