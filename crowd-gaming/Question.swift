@@ -17,12 +17,12 @@ class Question{
     var timeToAnswer: Double = 5
     var answers = [Answer]()
     
-    init( id qId : Int , questionText qQuestionText : String , multiplier qMultiplier : Double , creationDate qCreationDate : String , timeToAnswer qTimeToAnswer : Double){
-        id = qId
-        questionText = qQuestionText
-        multiplier = qMultiplier
-        creationDate = qCreationDate
-        timeToAnswer = qTimeToAnswer
+    init( id  : Int , questionText : String , multiplier : Double , creationDate : String , timeToAnswer : Double){
+        self.id = id
+        self.questionText = questionText
+        self.multiplier = multiplier
+        self.creationDate = creationDate
+        self.timeToAnswer = timeToAnswer
     }
     
 }

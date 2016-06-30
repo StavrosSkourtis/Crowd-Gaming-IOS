@@ -14,9 +14,9 @@ class Answer{
     var answerText : String = ""
     var creationDate : String = ""
     
-    init ( id aId : Int , answerText aAnswerText : String , creationDate aCreationDate : String){
-        id = aId
-        answerText = aAnswerText
-        creationDate = aCreationDate
+    init ( id : Int , answerText : String , creationDate : String){
+        self.id = id
+        self.answerText = answerText
+        self.creationDate = creationDate
     }
 }

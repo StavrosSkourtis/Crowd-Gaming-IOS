@@ -20,17 +20,19 @@ class Questionnaire{
     var timeLeftToStart : Int
     var timeLeftToEnd : Int
     var questionGroups = [QuestionGroup]()
+    var allowMultipleGroupsPlaythrough : Bool
     
     
-    init( id qId: Int , name qName : String  , description qDescription : String , creationDate qCreationDate : String , answeredQuestions qAnsweredQuestions :Int ,
-        totalQuestion qTotalQuestions: Int , timeLeftToStart qTimeLeftToStart: Int , timeLeftToEnd qTimeLeftToEnd : Int){
-        id = qId
-        name = qName
-        description = qDescription
-        creationDate = qCreationDate
-        totalQuestions = qTotalQuestions
-        answeredQuestions = qAnsweredQuestions
-        timeLeftToStart = qTimeLeftToStart
-        timeLeftToEnd = qTimeLeftToEnd
+    init( id : Int , name : String  , description : String , creationDate : String , answeredQuestions  :Int ,
+        totalQuestions : Int , timeLeftToStart : Int , timeLeftToEnd  : Int , allowMultipleGroups : Bool){
+        self.id = id
+        self.name = name
+        self.description = description
+        self.creationDate = creationDate
+        self.totalQuestions = totalQuestions
+        self.answeredQuestions = answeredQuestions
+        self.timeLeftToStart = timeLeftToStart
+        self.timeLeftToEnd = timeLeftToEnd
+        self.allowMultipleGroupsPlaythrough = allowMultipleGroups;
     }
 }

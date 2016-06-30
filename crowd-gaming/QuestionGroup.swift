@@ -25,17 +25,27 @@ class QuestionGroup{
     var allowedRepeats : Int
     var currentRepeats : Int
     
-    init ( id qId : Int , name qName : String , latitude qLatitude : Double? , longitude qLongitude : Double? , radius qRadius : Double? , creationDate qCreationDate : String , answeredQuestions qAnsweredQuestions : Int , currentQuestion qCurrentQuestions : Int , allowedRepeats qAllowedRepeats : Int , currentRepeats qCurrentRepeats: Int , questionnaireId qQuestionnaireId : Int){
-        id = qId
-        name = qName
-        latitude = qLatitude
-        longitude = qLongitude
-        radius = qRadius
-        creationDate = qCreationDate
-        answeredQuestions = qAnsweredQuestions
-        totalQuestions = qCurrentQuestions
-        allowedRepeats = qAllowedRepeats
-        currentRepeats = qCurrentRepeats
-        questionnaireId = qQuestionnaireId
+    var priority : Int
+    var isCompleted : Bool
+    
+    var timeToComplete : Int
+    var timeLeft : Int?
+    
+    init ( id : Int , name : String , latitude : Double? , longitude : Double? , radius : Double? , creationDate : String , answeredQuestions : Int , currentQuestion  : Int , allowedRepeats  : Int , currentRepeats : Int , questionnaireId  : Int , priority  : Int , isCompleted  : Bool , timeToComplete : Int , timeLeft : Int? ){
+        self.id = id
+        self.name = name
+        self.latitude = latitude
+        self.longitude = longitude
+        self.radius = radius
+        self.creationDate = creationDate
+        self.answeredQuestions = answeredQuestions
+        self.totalQuestions = currentQuestion
+        self.allowedRepeats = allowedRepeats
+        self.currentRepeats = currentRepeats
+        self.questionnaireId = questionnaireId
+        self.priority = priority
+        self.isCompleted = isCompleted
+        self.timeToComplete = timeToComplete
+        self.timeLeft = timeLeft
     }
 }
