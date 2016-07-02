@@ -20,7 +20,7 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
     var userLatitude: Double?
     var userLongitude: Double?
     var locationManager: CLLocationManager!
-    
+    var currentPriority: Int = Int.max ;
     var timerGuard = true;
     
     override func viewDidLoad() {
@@ -49,6 +49,7 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
                 if group.timeLeft! <= 0
                 {
                     group.isCompleted = true
+                    calculateCurrentPriority()
                 }
             }
 
@@ -90,6 +91,7 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
             let json = ApiDriver.parseJson(responseString!)
             print(responseString)
             self.groups.removeAll()
+            self.currentPriority = Int.max;
             if let questionGroupsArrayJson = json["question-group"] as? NSArray{
                 print("In Here")
                 for item in questionGroupsArrayJson
@@ -142,6 +144,10 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
                     
                     print("Question Group \(id)")
                     
+                    if isCompleted==0 && priority < self.currentPriority
+                    {
+                        self.currentPriority = priority;
+                    }
                     
                     let questionGroup = QuestionGroup(id: id, name: name, latitude: latitude, longitude: longitude, radius: radius, creationDate: creationDate, answeredQuestions: answeredQuestions, currentQuestion: totalQuestions, allowedRepeats: allowedRepeats, currentRepeats: currentRepeats, questionnaireId: self.questionnaire!.id, priority: priority, isCompleted: isCompleted==1 ? true : false, timeToComplete: timeToComplete, timeLeft: timeLeft)
                     
@@ -267,7 +273,7 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
             cell.playButton.enabled = false
         }
         
-        if group.isCompleted
+        if group.isCompleted || ( group.priority != currentPriority)
         {
             cell.playButton.enabled = false
         }
@@ -304,6 +310,18 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
         return cell
     }
     
+    func calculateCurrentPriority()
+    {
+        self.currentPriority = Int.max;
+        
+        for group in groups {
+
+            if !group.isCompleted && group.priority < self.currentPriority
+            {
+                self.currentPriority = group.priority;
+            }
+        }
+    }
     
     @IBAction func unwindToQuestionGroupView(unwindSegue: UIStoryboardSegue)
     {
