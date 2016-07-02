@@ -30,8 +30,9 @@ class QuestionGroup{
     
     var timeToComplete : Int
     var timeLeft : Int?
+    var hasStarted : Bool
     
-    init ( id : Int , name : String , latitude : Double? , longitude : Double? , radius : Double? , creationDate : String , answeredQuestions : Int , currentQuestion  : Int , allowedRepeats  : Int , currentRepeats : Int , questionnaireId  : Int , priority  : Int , isCompleted  : Bool , timeToComplete : Int , timeLeft : Int? ){
+    init ( id : Int , name : String , latitude : Double? , longitude : Double? , radius : Double? , creationDate : String , answeredQuestions : Int , currentQuestion  : Int , allowedRepeats  : Int , currentRepeats : Int , questionnaireId  : Int , priority  : Int , isCompleted  : Bool , timeToComplete : Int , timeLeft : Int? , hasStarted : Bool){
         self.id = id
         self.name = name
         self.latitude = latitude
@@ -47,5 +48,6 @@ class QuestionGroup{
         self.isCompleted = isCompleted
         self.timeToComplete = timeToComplete
         self.timeLeft = timeLeft
+        self.hasStarted = hasStarted
     }
 }

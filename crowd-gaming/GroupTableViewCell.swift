@@ -86,6 +86,7 @@ class GroupTableViewCell: UITableViewCell {
                         {
                             self.group.currentRepeats++;
                             self.group.answeredQuestions=0;
+                            self.group.timeLeft = -1;
                         }
                     }
                     print("Reset: \(json["code"] as? String) / \(json["message"] as? String)" )

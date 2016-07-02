@@ -212,28 +212,13 @@ class QuestionViewController: UIViewController ,CLLocationManagerDelegate{
                         self.actionButton.setTitle("Confirm", forState: .Normal)
                    // })
                     
-                    
-                    case "603" , "604" , "606" , "607" , "608":
+                    default:
                         let alert = UIAlertController(title: "Error", message: json["message"] as? String, preferredStyle: UIAlertControllerStyle.Alert)
                         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {(action: UIAlertAction!) in
                             print("Back to group list")
                             self.performSegueWithIdentifier("goBackToGroupsSegue", sender: self)
                         }))
                         self.presentViewController(alert, animated: true, completion: nil)
-                    case "609":
-                        let alert = UIAlertController(title: "Question group completed!", message: "No more questions in this group!", preferredStyle: UIAlertControllerStyle.Alert)
-                    
-                    
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {(action: UIAlertAction!) in
-                            print("Back to group list")
-                            self.performSegueWithIdentifier("goBackToGroupsSegue", sender: self)
-                        }))
-                    
-                        self.presentViewController(alert, animated: true, completion: nil)
-                    
-
-                    default:
-                        print ("No code mate")
                         break
                     }
                 })

@@ -107,6 +107,7 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
                     let allowedRepeats: Int = groupInfo["allowed-repeats"] as! Int
                     let currentRepeats: Int = groupInfo["current-repeats"] as! Int
                     let priority : Int = groupInfo["priority"] as! Int
+                    let hasStarted : Int = groupInfo["has-started"] as! Int
                     
                     var isCompleted : Int = 0;
                     
@@ -114,6 +115,7 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
                     {
                         isCompleted = groupInfo["is-completed"] as! Int
                     }
+                    
                     
                     let timeToComplete : Int = groupInfo["time-to-complete"] as! Int
                     
@@ -149,7 +151,7 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
                         self.currentPriority = priority;
                     }
                     
-                    let questionGroup = QuestionGroup(id: id, name: name, latitude: latitude, longitude: longitude, radius: radius, creationDate: creationDate, answeredQuestions: answeredQuestions, currentQuestion: totalQuestions, allowedRepeats: allowedRepeats, currentRepeats: currentRepeats, questionnaireId: self.questionnaire!.id, priority: priority, isCompleted: isCompleted==1 ? true : false, timeToComplete: timeToComplete, timeLeft: timeLeft)
+                    let questionGroup = QuestionGroup(id: id, name: name, latitude: latitude, longitude: longitude, radius: radius, creationDate: creationDate, answeredQuestions: answeredQuestions, currentQuestion: totalQuestions, allowedRepeats: allowedRepeats, currentRepeats: currentRepeats, questionnaireId: self.questionnaire!.id, priority: priority, isCompleted: isCompleted==1 ? true : false, timeToComplete: timeToComplete, timeLeft: timeLeft , hasStarted: hasStarted==1 ? true : false)
                     
                     // let questionGroup = QuestionGroup(id: 12, name: "Question group new-name", latitude: 12, longitude: 12, radius: 21, creationDate: "12", answeredQuestions: 1, currentQuestion: 32, allowedRepeats: 4, currentRepeats: 2)
                     
@@ -203,6 +205,12 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
         let callIdentifier = "GroupTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(callIdentifier, forIndexPath: indexPath) as! GroupTableViewCell
         
+        if indexPath.row >= groups.count
+        {
+            return cell;
+        }
+        
+        
         let group = groups[indexPath.row]
         
         cell.questionGroupName.text = group.name
@@ -225,7 +233,7 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
         
         cell.priorityLabel.text = "Order \(group.priority)  Repeats:\(group.currentRepeats)/\(group.allowedRepeats)"
         
-        if group.timeToComplete == -1 || group.isCompleted
+        if group.isCompleted
         {
             cell.timeLeft.text = ""
         }
@@ -233,11 +241,18 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
         {
             let ( value , type) = groupTimeLeft(group.timeLeft!)
             cell.timeLeft.text = "Time Left \(value)\(type)"
+            cell.timeLeft.textColor = UIColor(red: 42/255.0 , green: 194/255.0 , blue: 245/255.0 , alpha: 1)
+        }
+        else if group.hasStarted
+        {
+            cell.timeLeft.text = "Started";
+            cell.timeLeft.textColor = UIColor(red: 42/255.0 , green: 194/255.0 , blue: 245/255.0 , alpha: 1)
         }
         else
         {
             let ( value , type) = groupTimeLeft(group.timeToComplete)
             cell.timeLeft.text = "Available time \(value)\(type)"
+            cell.timeLeft.textColor = UIColor.blackColor()
         }
         
         if let lat = userLatitude , let lon = userLongitude , let groupLat = group.latitude , let groupLon = group.longitude

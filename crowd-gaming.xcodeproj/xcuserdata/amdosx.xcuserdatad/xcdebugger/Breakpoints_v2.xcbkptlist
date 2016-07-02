@@ -245,11 +245,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GroupTableViewController.swift"
-            timestampString = "489174512.849499"
+            timestampString = "489177620.910243"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
             landmarkName = "loadGroups()"
             landmarkType = "5">
          </BreakpointContent>
@@ -309,11 +309,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GroupTableViewController.swift"
-            timestampString = "489174512.849499"
+            timestampString = "489177620.910243"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
             landmarkName = "loadGroups()"
             landmarkType = "5">
          </BreakpointContent>
@@ -341,11 +341,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GroupTableViewController.swift"
-            timestampString = "489174512.849499"
+            timestampString = "489177871.092516"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "280"
-            endingLineNumber = "280"
+            startingLineNumber = "295"
+            endingLineNumber = "295"
             landmarkName = "tableView(_:cellForRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -357,11 +357,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GroupTableViewController.swift"
-            timestampString = "489174512.849499"
+            timestampString = "489177871.092516"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "375"
-            endingLineNumber = "375"
+            startingLineNumber = "390"
+            endingLineNumber = "390"
             landmarkName = "prepareForSegue(_:sender:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -437,11 +437,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "crowd-gaming/QuestionViewController.swift"
-            timestampString = "489173480.797725"
+            timestampString = "489175534.985733"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "239"
-            endingLineNumber = "239"
+            startingLineNumber = "224"
+            endingLineNumber = "224"
             landmarkName = "loadNextQuestion()"
             landmarkType = "5">
          </BreakpointContent>
@@ -485,11 +485,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "crowd-gaming/QuestionViewController.swift"
-            timestampString = "489173480.797725"
+            timestampString = "489175534.985733"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "366"
-            endingLineNumber = "366"
+            startingLineNumber = "351"
+            endingLineNumber = "351"
             landmarkName = "postAnswer(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -501,11 +501,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "crowd-gaming/QuestionViewController.swift"
-            timestampString = "489173480.797725"
+            timestampString = "489175534.985733"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "423"
-            endingLineNumber = "423"
+            startingLineNumber = "408"
+            endingLineNumber = "408"
             landmarkName = "unwindFromApiResponse(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -517,11 +517,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GroupTableViewController.swift"
-            timestampString = "489174512.849499"
+            timestampString = "489177871.092516"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "322"
-            endingLineNumber = "322"
+            startingLineNumber = "337"
+            endingLineNumber = "337"
             landmarkName = "calculateCurrentPriority()"
             landmarkType = "5">
          </BreakpointContent>
