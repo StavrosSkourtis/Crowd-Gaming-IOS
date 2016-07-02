@@ -215,7 +215,10 @@ class QuestionViewController: UIViewController ,CLLocationManagerDelegate{
                     
                     case "603" , "604" , "606" , "607" , "608":
                         let alert = UIAlertController(title: "Error", message: json["message"] as? String, preferredStyle: UIAlertControllerStyle.Alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {(action: UIAlertAction!) in
+                            print("Back to group list")
+                            self.performSegueWithIdentifier("goBackToGroupsSegue", sender: self)
+                        }))
                         self.presentViewController(alert, animated: true, completion: nil)
                     case "609":
                         let alert = UIAlertController(title: "Question group completed!", message: "No more questions in this group!", preferredStyle: UIAlertControllerStyle.Alert)
@@ -223,7 +226,7 @@ class QuestionViewController: UIViewController ,CLLocationManagerDelegate{
                     
                         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {(action: UIAlertAction!) in
                             print("Back to group list")
-                            self.navigationController?.popViewControllerAnimated(true)
+                            self.performSegueWithIdentifier("goBackToGroupsSegue", sender: self)
                         }))
                     
                         self.presentViewController(alert, animated: true, completion: nil)
@@ -323,12 +326,20 @@ class QuestionViewController: UIViewController ,CLLocationManagerDelegate{
                         if code == "201"
                         {
                             self.group?.isCompleted = true
+                            
+                            self.performSegueWithIdentifier("goBackToGroupsSegue", sender: self)
                         }
                         
                     case "603" , "605" , "606" , "607" , "500" , "610":
-                        let alert = UIAlertController(title: "Error", message: json["message"] as! String, preferredStyle: UIAlertControllerStyle.Alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                        let alert = UIAlertController(title: "Attention!", message: json["message"] as! String, preferredStyle: UIAlertControllerStyle.Alert)
+                        alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { action in
+                            switch action.style{
+                            case .Default , .Cancel , .Destructive:
+                                self.performSegueWithIdentifier("goBackToGroupsSegue", sender: self)
+                            }
+                        }))
                         self.presentViewController(alert, animated: true, completion: nil)
+                        
                     default:
                         print ("No code mate")
                         break
@@ -407,6 +418,11 @@ class QuestionViewController: UIViewController ,CLLocationManagerDelegate{
         {
             answerButton4.backgroundColor = UIColor(red: 77/255.0, green: 195/255.0, blue: 1, alpha: 1)
         }
+    }
+    
+    @IBAction func unwindFromApiResponse(unwindSegue: UIStoryboardSegue)
+    {
+        
     }
     
     @IBAction func OnAnswer2(sender: AnyObject) {

@@ -32,7 +32,7 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.requestAlwaysAuthorization()
             locationManager.startUpdatingLocation()
-            let _ = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: "onTimer", userInfo: nil, repeats: true)
+            let _ = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "onTimer", userInfo: nil, repeats: true)
             timerGuard = false;
         }
         loadGroups();
@@ -42,9 +42,14 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
         
         for group in groups {
             
-            if let _ = group.timeLeft
+            if let _ = group.timeLeft where group.timeToComplete != -1 && group.timeLeft >= 0
             {
                 group.timeLeft! -= 1
+                
+                if group.timeLeft! <= 0
+                {
+                    group.isCompleted = true
+                }
             }
 
         }
@@ -84,7 +89,7 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
             
             let json = ApiDriver.parseJson(responseString!)
             print(responseString)
-            
+            self.groups.removeAll()
             if let questionGroupsArrayJson = json["question-group"] as? NSArray{
                 print("In Here")
                 for item in questionGroupsArrayJson
@@ -218,7 +223,7 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
         {
             cell.timeLeft.text = ""
         }
-        else if let _ = group.timeLeft
+        else if let _ = group.timeLeft where group.timeLeft > 0
         {
             let ( value , type) = groupTimeLeft(group.timeLeft!)
             cell.timeLeft.text = "Time Left \(value)\(type)"
@@ -297,6 +302,13 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
         cell.viewController = self
         
         return cell
+    }
+    
+    
+    @IBAction func unwindToQuestionGroupView(unwindSegue: UIStoryboardSegue)
+    {
+        print("UNWIND!!");
+        loadGroups();
     }
     
 
