@@ -16,7 +16,10 @@ class Answer{
     
     init ( id : Int , answerText : String , creationDate : String){
         self.id = id
-        self.answerText = answerText
+        self.answerText = answerText.stringByReplacingOccurrencesOfString("&quot;", withString: "\"")
+        self.answerText = self.answerText.stringByReplacingOccurrencesOfString("&lt;", withString: "<")
+        self.answerText = self.answerText.stringByReplacingOccurrencesOfString("&gt;", withString: ">")
+        self.answerText = self.answerText.stringByReplacingOccurrencesOfString("&ampt;", withString: "&")
         self.creationDate = creationDate
     }
 }

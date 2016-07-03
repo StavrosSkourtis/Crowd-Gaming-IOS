@@ -21,10 +21,11 @@ class Questionnaire{
     var timeLeftToEnd : Int
     var questionGroups = [QuestionGroup]()
     var allowMultipleGroupsPlaythrough : Bool
+    var isCompleted : Bool
     
     
     init( id : Int , name : String  , description : String , creationDate : String , answeredQuestions  :Int ,
-        totalQuestions : Int , timeLeftToStart : Int , timeLeftToEnd  : Int , allowMultipleGroups : Bool){
+        totalQuestions : Int , timeLeftToStart : Int , timeLeftToEnd  : Int , allowMultipleGroups : Bool , isCompleted : Bool){
         self.id = id
         self.name = name
         self.description = description
@@ -34,5 +35,6 @@ class Questionnaire{
         self.timeLeftToStart = timeLeftToStart
         self.timeLeftToEnd = timeLeftToEnd
         self.allowMultipleGroupsPlaythrough = allowMultipleGroups;
+        self.isCompleted = isCompleted
     }
 }

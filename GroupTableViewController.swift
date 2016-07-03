@@ -233,7 +233,7 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
         
         cell.priorityLabel.text = "Order \(group.priority)  Repeats:\(group.currentRepeats)/\(group.allowedRepeats)"
         
-        if group.isCompleted
+        if group.isCompleted || ( !group.hasStarted && group.timeToComplete == -1)
         {
             cell.timeLeft.text = ""
         }
@@ -315,7 +315,7 @@ class GroupTableViewController: UITableViewController,CLLocationManagerDelegate 
             cell.viewOnMapButton.enabled = false
         }
         
-        if group.currentRepeats == group.allowedRepeats || group.isCompleted
+        if group.currentRepeats == group.allowedRepeats || group.isCompleted || group.priority != currentPriority
         {
             cell.resetButton.enabled = false
         }

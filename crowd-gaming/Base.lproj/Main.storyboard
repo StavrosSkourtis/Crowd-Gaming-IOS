@@ -104,15 +104,15 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="12/32 Questions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Wx-r7-GLL">
-                                            <rect key="frame" x="462" y="50" width="125" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46Z-GS-PPr">
                                             <rect key="frame" x="13" y="50" width="234" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="12/32 Questions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Wx-r7-GLL">
+                                            <rect key="frame" x="467" y="60" width="125" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -120,8 +120,8 @@
                                     <constraints>
                                         <constraint firstItem="Owm-2K-rjq" firstAttribute="leading" secondItem="rZ6-gS-x9O" secondAttribute="leadingMargin" constant="5" id="1By-do-K0o"/>
                                         <constraint firstItem="Owm-2K-rjq" firstAttribute="trailing" secondItem="rZ6-gS-x9O" secondAttribute="trailingMargin" constant="5" id="4A2-nB-so1"/>
+                                        <constraint firstItem="1Wx-r7-GLL" firstAttribute="top" secondItem="Owm-2K-rjq" secondAttribute="bottom" constant="24" id="975-gT-Lls"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="1Wx-r7-GLL" secondAttribute="trailing" constant="5" id="9W6-Z8-a9Y"/>
-                                        <constraint firstItem="1Wx-r7-GLL" firstAttribute="top" secondItem="Owm-2K-rjq" secondAttribute="bottom" constant="10" id="sQZ-Ku-tr8"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -241,13 +241,13 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="toW-37-qnd">
                                             <rect key="frame" x="8" y="84" width="31" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qk4-aq-eee">
                                             <rect key="frame" x="550" y="79" width="42" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Repeats" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mip-3X-kIU">
@@ -373,16 +373,6 @@
                                     <action selector="OnAction4:" destination="ACR-Ch-hNw" eventType="touchUpInside" id="cok-8Z-Tzs"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KBk-DO-1lg">
-                                <rect key="frame" x="20" y="370" width="560" height="50"/>
-                                <color key="backgroundColor" red="0.9397810510847866" green="0.94141499813614582" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
-                                <state key="normal">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="OnAnswer3:" destination="ACR-Ch-hNw" eventType="touchUpInside" id="0YW-oK-ToP"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GNM-FI-9P7">
                                 <rect key="frame" x="20" y="313" width="560" height="50"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.68000000000000005" colorSpace="calibratedRGB"/>
@@ -391,6 +381,16 @@
                                 </state>
                                 <connections>
                                     <action selector="OnAnswer2:" destination="ACR-Ch-hNw" eventType="touchUpInside" id="jkx-Sh-ZAP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KBk-DO-1lg">
+                                <rect key="frame" x="20" y="371" width="560" height="50"/>
+                                <color key="backgroundColor" red="0.9397810510847866" green="0.94141499813614582" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="OnAnswer3:" destination="ACR-Ch-hNw" eventType="touchUpInside" id="0YW-oK-ToP"/>
                                 </connections>
                             </button>
                         </subviews>

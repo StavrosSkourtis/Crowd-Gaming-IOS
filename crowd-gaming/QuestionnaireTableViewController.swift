@@ -91,6 +91,7 @@ class QuestionnaireTableViewController: UITableViewController {
                     let totalQuestions: Int = questionnaireInfo["total-questions"] as! Int
                     let answeredQuestions: Int = questionnaireInfo["answered-questions"] as! Int
                     let multiplePlaythroughs : Int = questionnaireInfo["allow-multiple-groups-playthrough"] as! Int
+                    let isCompleted : Int = questionnaireInfo["is-completed"] as! Int
                     
                     if timeLeft != 0
                     {
@@ -99,7 +100,7 @@ class QuestionnaireTableViewController: UITableViewController {
                     
                     timeLeftToEnd = timeLeftToEnd * 60 - components.second
                     
-                    let questionnaire = Questionnaire(id: id, name: name, description: description, creationDate: creationDate, answeredQuestions: answeredQuestions, totalQuestions: totalQuestions, timeLeftToStart: timeLeft, timeLeftToEnd: timeLeftToEnd, allowMultipleGroups: multiplePlaythroughs==1 ? true : false)
+                    let questionnaire = Questionnaire(id: id, name: name, description: description, creationDate: creationDate, answeredQuestions: answeredQuestions, totalQuestions: totalQuestions, timeLeftToStart: timeLeft, timeLeftToEnd: timeLeftToEnd, allowMultipleGroups: multiplePlaythroughs==1, isCompleted : isCompleted==1)
                     
                     print("Questionnaire \(id)")
                     
@@ -150,8 +151,18 @@ class QuestionnaireTableViewController: UITableViewController {
         let questionnaire = questionnaires[indexPath.row]
         
         cell.nameLabel.text = questionnaire.name
-        cell.progressLabel.text = "Progress: \(questionnaire.answeredQuestions)/\(questionnaire.totalQuestions)"
-
+        
+        if( questionnaire.isCompleted )
+        {
+            cell.progressLabel.text = "Completed"
+            cell.progressLabel.textColor = UIColor(red: 5/255.0 , green: 86/255.0 , blue: 9/255.0 , alpha: 1)
+        }
+        else
+        {
+            cell.progressLabel.text = "Progress: \(questionnaire.answeredQuestions)/\(questionnaire.totalQuestions)"
+            cell.progressLabel.textColor = UIColor.blackColor()
+        }
+        
         if questionnaire.timeLeftToStart == 0
         {
             let (d,h,m,s) = secondsToHoursMinutesSeconds(questionnaire.timeLeftToEnd)

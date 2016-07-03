@@ -389,11 +389,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "crowd-gaming/QuestionViewController.swift"
-            timestampString = "486212371.41008"
+            timestampString = "489234729.79387"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
             landmarkName = "locationManager(_:didUpdateLocations:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -437,11 +437,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "crowd-gaming/QuestionViewController.swift"
-            timestampString = "489175534.985733"
+            timestampString = "489234729.79387"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "224"
-            endingLineNumber = "224"
+            startingLineNumber = "247"
+            endingLineNumber = "247"
             landmarkName = "loadNextQuestion()"
             landmarkType = "5">
          </BreakpointContent>
@@ -453,11 +453,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "crowd-gaming/Quastionnaire.swift"
-            timestampString = "488636870.946239"
+            timestampString = "489234197.901118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "init(id:name:description:creationDate:answeredQuestions:totalQuestions:timeLeftToStart:timeLeftToEnd:allowMultipleGroups:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -485,11 +485,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "crowd-gaming/QuestionViewController.swift"
-            timestampString = "489175534.985733"
+            timestampString = "489234729.79387"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "351"
-            endingLineNumber = "351"
+            startingLineNumber = "375"
+            endingLineNumber = "375"
             landmarkName = "postAnswer(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -501,11 +501,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "crowd-gaming/QuestionViewController.swift"
-            timestampString = "489175534.985733"
+            timestampString = "489234729.79387"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "408"
-            endingLineNumber = "408"
+            startingLineNumber = "432"
+            endingLineNumber = "432"
             landmarkName = "unwindFromApiResponse(_:)"
             landmarkType = "5">
          </BreakpointContent>

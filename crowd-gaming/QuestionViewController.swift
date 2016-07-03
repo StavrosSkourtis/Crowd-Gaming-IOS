@@ -45,9 +45,25 @@ class QuestionViewController: UIViewController ,CLLocationManagerDelegate{
         
         
         answerButton1.layer.cornerRadius = 12
+        answerButton1.titleLabel?.numberOfLines = 0
+        answerButton1.titleLabel?.adjustsFontSizeToFitWidth = true
+        answerButton1.titleLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        
         answerButton2.layer.cornerRadius = 12
+        answerButton2.titleLabel?.numberOfLines = 0
+        answerButton2.titleLabel?.adjustsFontSizeToFitWidth = true
+        answerButton2.titleLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        
         answerButton3.layer.cornerRadius = 12
+        answerButton3.titleLabel?.numberOfLines = 0
+        answerButton3.titleLabel?.adjustsFontSizeToFitWidth = true
+        answerButton3.titleLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+    
         answerButton4.layer.cornerRadius = 12
+        answerButton4.titleLabel?.numberOfLines = 0
+        answerButton4.titleLabel?.adjustsFontSizeToFitWidth = true
+        answerButton4.titleLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        
         
         
         let _ = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "onTimer", userInfo: nil, repeats: true)
@@ -60,7 +76,14 @@ class QuestionViewController: UIViewController ,CLLocationManagerDelegate{
         if let _ = question {
             if( buttonIsConfirm )
             {
-                if( question?.timeToAnswer == 0 )
+                print(" TTA : \(question?.timeToAnswer)")
+                
+
+                if question?.timeToAnswer <= -1
+                {
+                    statusLabel.text = "Select an answer";
+                }
+                else if( question?.timeToAnswer == 0 )
                 {
                     postAnswer(0);
                 }
@@ -226,6 +249,7 @@ class QuestionViewController: UIViewController ,CLLocationManagerDelegate{
             else
             {
                 print("Code is nil")
+                self.performSegueWithIdentifier("goBackToGroupsSegue", sender: self)
             }
             
             dispatch_sync(dispatch_get_main_queue(),

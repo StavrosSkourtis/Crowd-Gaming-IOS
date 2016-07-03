@@ -19,7 +19,10 @@ class Question{
     
     init( id  : Int , questionText : String , multiplier : Double , creationDate : String , timeToAnswer : Double){
         self.id = id
-        self.questionText = questionText
+        self.questionText = questionText.stringByReplacingOccurrencesOfString("&quot;", withString: "\"")
+        self.questionText = self.questionText.stringByReplacingOccurrencesOfString("&lt;", withString: "<")
+        self.questionText = self.questionText.stringByReplacingOccurrencesOfString("&gt;", withString: ">")
+        self.questionText = self.questionText.stringByReplacingOccurrencesOfString("&ampt;", withString: "&")
         self.multiplier = multiplier
         self.creationDate = creationDate
         self.timeToAnswer = timeToAnswer
