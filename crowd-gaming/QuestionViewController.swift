@@ -230,7 +230,16 @@ class QuestionViewController: UIViewController ,CLLocationManagerDelegate{
                             self.answerButton4.enabled = false;
                             self.answerButton4.backgroundColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 0)
                         }
-                        self.statusLabel.text = String(format: "Time left: %.0fs", self.question!.timeToAnswer)
+                        
+                        if self.question?.timeToAnswer <= -1
+                        {
+                            self.statusLabel.text = "Select an answer";
+                        }
+                        else
+                        {
+                            self.statusLabel.text = String(format: "Time left: %.0fs", self.question!.timeToAnswer)
+                        }
+                        
                         self.buttonIsConfirm = true;
                         self.actionButton.setTitle("Confirm", forState: .Normal)
                    // })
