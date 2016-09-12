@@ -1,6 +1,6 @@
 # Crowd Gaming IOS Client
 
-Testing Build:
+Website Testing version:
 https://crowd-gaming.skourtis.me
 
 This is a client for the Crowd Gaming web application https://github.com/gtzinos/Crowd-Gaming.
